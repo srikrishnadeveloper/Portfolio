@@ -14,62 +14,62 @@ import {
 const skills = [
   {
     name: "HTML",
-    icon: <Layout className="w-4 h-4" />,
+    icon: <Layout className="w-5 h-5" />,
   },
   {
     name: "CSS",
-    icon: <Layout className="w-4 h-4" />,
+    icon: <Layout className="w-5 h-5" />,
   },
   {
     name: "JavaScript",
-    icon: <FileJson className="w-4 h-4" />,
+    icon: <FileJson className="w-5 h-5" />,
   },
   {
     name: "Flutter",
-    icon: <Code2 className="w-4 h-4" />,
+    icon: <Code2 className="w-5 h-5" />,
   },
   {
     name: "Dart",
-    icon: <Code2 className="w-4 h-4" />,
+    icon: <Code2 className="w-5 h-5" />,
   },
   {
     name: "MongoDB",
-    icon: <Database className="w-4 h-4" />,
+    icon: <Database className="w-5 h-5" />,
   },
   {
     name: "Node.js",
-    icon: <Server className="w-4 h-4" />,
+    icon: <Server className="w-5 h-5" />,
   },
   {
     name: "React",
-    icon: <Code2 className="w-4 h-4" />,
+    icon: <Code2 className="w-5 h-5" />,
   },
   {
     name: "Express",
-    icon: <Server className="w-4 h-4" />,
+    icon: <Server className="w-5 h-5" />,
   },
   {
     name: "Angular",
-    icon: <Code2 className="w-4 h-4" />,
+    icon: <Code2 className="w-5 h-5" />,
   },
   {
     name: "GitHub",
-    icon: <Github className="w-4 h-4" />,
+    icon: <Github className="w-5 h-5" />,
   },
   {
     name: "SEO",
-    icon: <Search className="w-4 h-4" />,
+    icon: <Search className="w-5 h-5" />,
   },
   {
     name: "Next.js",
-    icon: <Globe className="w-4 h-4" />,
+    icon: <Globe className="w-5 h-5" />,
   },
 ];
 
 const Skill = ({ name, icon }: { name: string; icon: React.ReactNode }) => (
   <motion.div
     whileHover={{ scale: 1.05 }}
-    className="glass-card px-4 py-2 rounded-full text-sm flex items-center gap-2"
+    className="glass-card px-5 py-3 rounded-[3px] text-base flex items-center gap-3"
   >
     {icon}
     {name}
