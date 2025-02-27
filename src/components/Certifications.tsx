@@ -20,6 +20,24 @@ const certifications = [
     date: "2023",
     image: "/placeholder.svg",
   },
+  {
+    title: "Advanced Cloud Computing",
+    issuer: "AWS Academy",
+    date: "2023",
+    image: "/placeholder.svg",
+  },
+  {
+    title: "Machine Learning Specialist",
+    issuer: "Google AI",
+    date: "2023",
+    image: "/placeholder.svg",
+  },
+  {
+    title: "Data Science Professional",
+    issuer: "DataCamp",
+    date: "2023",
+    image: "/placeholder.svg",
+  }
 ];
 
 const Certifications = () => {
