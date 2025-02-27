@@ -19,6 +19,30 @@ const projects = [
     github: "https://github.com",
     demo: "https://demo.com",
   },
+  {
+    title: "DataViz Pro",
+    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    image: "/placeholder.svg",
+    tech: ["D3.js", "Vue.js", "Python"],
+    github: "https://github.com",
+    demo: "https://demo.com",
+  },
+  {
+    title: "CloudSync",
+    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut enim ad minim veniam, quis nostrud exercitation.",
+    image: "/placeholder.svg",
+    tech: ["AWS", "Docker", "Kubernetes"],
+    github: "https://github.com",
+    demo: "https://demo.com",
+  },
+  {
+    title: "AI Assistant",
+    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis aute irure dolor in reprehenderit in voluptate velit esse.",
+    image: "/placeholder.svg",
+    tech: ["TensorFlow", "Python", "FastAPI"],
+    github: "https://github.com",
+    demo: "https://demo.com",
+  }
 ];
 
 const Projects = () => {
