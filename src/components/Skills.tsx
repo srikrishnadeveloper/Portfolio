@@ -9,96 +9,107 @@ import {
   Layout,
   Search,
   Server,
+  Blocks,
+  LayoutDashboard,
+  Smartphone,
+  Code,
+  BoxSelect,
 } from "lucide-react";
+import SkillCard from "./SkillCard";
 
 const skills = [
   {
     name: "HTML",
-    icon: <Layout className="w-5 h-5" />,
+    icon: <Layout className="w-5 h-5 text-orange-500/70" />,
+    filledIcon: <Layout className="w-5 h-5 text-orange-500" />,
     level: 90,
+    link: "https://developer.mozilla.org/en-US/docs/Web/HTML",
   },
   {
     name: "CSS",
-    icon: <Layout className="w-5 h-5" />,
+    icon: <BoxSelect className="w-5 h-5 text-blue-500/70" />,
+    filledIcon: <BoxSelect className="w-5 h-5 text-blue-500" />,
     level: 85,
+    link: "https://developer.mozilla.org/en-US/docs/Web/CSS",
   },
   {
     name: "JavaScript",
-    icon: <FileJson className="w-5 h-5" />,
+    icon: <FileJson className="w-5 h-5 text-yellow-500/70" />,
+    filledIcon: <FileJson className="w-5 h-5 text-yellow-500" />,
     level: 88,
+    link: "https://developer.mozilla.org/en-US/docs/Web/JavaScript",
   },
   {
     name: "Flutter",
-    icon: <Code2 className="w-5 h-5" />,
+    icon: <Code2 className="w-5 h-5 text-blue-400/70" />,
+    filledIcon: <Code2 className="w-5 h-5 text-blue-400" />,
     level: 80,
+    link: "https://flutter.dev",
   },
   {
     name: "Dart",
-    icon: <Code2 className="w-5 h-5" />,
+    icon: <Code className="w-5 h-5 text-cyan-500/70" />,
+    filledIcon: <Code className="w-5 h-5 text-cyan-500" />,
     level: 78,
+    link: "https://dart.dev",
   },
   {
     name: "MongoDB",
-    icon: <Database className="w-5 h-5" />,
+    icon: <Database className="w-5 h-5 text-green-600/70" />,
+    filledIcon: <Database className="w-5 h-5 text-green-600" />,
     level: 82,
+    link: "https://www.mongodb.com",
   },
   {
     name: "Node.js",
-    icon: <Server className="w-5 h-5" />,
+    icon: <Server className="w-5 h-5 text-green-500/70" />,
+    filledIcon: <Server className="w-5 h-5 text-green-500" />,
     level: 85,
+    link: "https://nodejs.org",
   },
   {
     name: "React",
-    icon: <Code2 className="w-5 h-5" />,
+    icon: <Blocks className="w-5 h-5 text-blue-600/70" />,
+    filledIcon: <Blocks className="w-5 h-5 text-blue-600" />,
     level: 87,
+    link: "https://reactjs.org",
   },
   {
     name: "Express",
-    icon: <Server className="w-5 h-5" />,
+    icon: <Server className="w-5 h-5 text-gray-600/70" />,
+    filledIcon: <Server className="w-5 h-5 text-gray-600" />,
     level: 83,
+    link: "https://expressjs.com",
   },
   {
     name: "Angular",
-    icon: <Code2 className="w-5 h-5" />,
+    icon: <Code2 className="w-5 h-5 text-red-500/70" />,
+    filledIcon: <Code2 className="w-5 h-5 text-red-500" />,
     level: 75,
+    link: "https://angular.io",
   },
   {
     name: "GitHub",
-    icon: <Github className="w-5 h-5" />,
+    icon: <Github className="w-5 h-5 text-gray-700/70" />,
+    filledIcon: <Github className="w-5 h-5 text-gray-700" />,
     level: 90,
+    link: "https://github.com",
   },
   {
     name: "SEO",
-    icon: <Search className="w-5 h-5" />,
+    icon: <Search className="w-5 h-5 text-blue-800/70" />,
+    filledIcon: <Search className="w-5 h-5 text-blue-800" />,
     level: 80,
+    link: "https://developers.google.com/search",
   },
   {
     name: "Next.js",
-    icon: <Globe className="w-5 h-5" />,
+    icon: <LayoutDashboard className="w-5 h-5 text-black/70 dark:text-white/70" />,
+    filledIcon: <LayoutDashboard className="w-5 h-5 text-black dark:text-white" />,
     level: 85,
+    link: "https://nextjs.org",
   },
 ];
-
-const Skill = ({ name, icon, level }: { name: string; icon: React.ReactNode; level: number }) => (
-  <motion.div
-    whileHover={{ scale: 1.05, y: -5 }}
-    className="glass-card px-5 py-4 rounded-lg text-base flex flex-col items-center gap-3"
-  >
-    <div className="flex items-center gap-2 mb-2">
-      <span className="p-2 rounded-full bg-primary/10">{icon}</span>
-      <span className="font-medium">{name}</span>
-    </div>
-    <div className="w-full h-2 bg-gray-200 dark:bg-gray-700 rounded-full overflow-hidden">
-      <motion.div 
-        className="h-full bg-primary"
-        initial={{ width: 0 }}
-        whileInView={{ width: `${level}%` }}
-        viewport={{ once: true }}
-        transition={{ duration: 1, ease: "easeOut", delay: 0.2 }}
-      />
-    </div>
-  </motion.div>
-);
 
 const Skills = () => {
   return (
@@ -117,7 +128,14 @@ const Skills = () => {
           </p>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
             {skills.map((skill) => (
-              <Skill key={skill.name} name={skill.name} icon={skill.icon} level={skill.level} />
+              <SkillCard 
+                key={skill.name} 
+                name={skill.name} 
+                icon={skill.icon} 
+                filledIcon={skill.filledIcon}
+                level={skill.level} 
+                link={skill.link}
+              />
             ))}
           </div>
         </motion.div>
