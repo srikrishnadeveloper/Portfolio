@@ -1,6 +1,6 @@
 
 import { useState, useEffect } from "react";
-import { Moon, Sun } from "lucide-react";
+import { Moon, Sun, Download } from "lucide-react";
 import { useTheme } from "./ThemeProvider";
 import { motion } from "framer-motion";
 
@@ -37,6 +37,16 @@ const Navbar = () => {
     }
   };
 
+  const handleResumeDownload = () => {
+    // Replace with actual resume file when available
+    const link = document.createElement('a');
+    link.href = '/resume.pdf';
+    link.download = 'Srikrishna-Resume.pdf';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
   return (
     <motion.nav
       initial={{ y: -100 }}
@@ -47,7 +57,19 @@ const Navbar = () => {
     >
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16">
-          <div className="flex-1" />
+          {/* Brand Name */}
+          <motion.div 
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.2 }}
+            className="text-lg font-bold"
+          >
+            <span className="bg-clip-text text-transparent bg-gradient-to-r from-primary to-primary/70">
+              Srikrishna
+            </span>
+          </motion.div>
+          
+          {/* Navigation Links */}
           <div className="hidden md:flex items-center space-x-8">
             {["About", "Projects", "Contact"].map((item) => (
               <button
@@ -70,18 +92,34 @@ const Navbar = () => {
                 )}
               </button>
             ))}
+            
+            {/* Resume Download Button */}
+            <motion.button
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              onClick={handleResumeDownload}
+              className="inline-flex items-center gap-1.5 px-4 py-1.5 text-sm rounded-full bg-primary text-primary-foreground hover:bg-primary/90 transition-colors"
+            >
+              <Download className="w-4 h-4" />
+              Resume
+            </motion.button>
           </div>
-          <div className="flex-1 flex justify-end">
-            <button
+          
+          {/* Theme Toggle */}
+          <div className="flex items-center space-x-4">
+            <motion.button
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.9 }}
               onClick={() => setTheme(theme === "light" ? "dark" : "light")}
               className="p-2 rounded-full hover:bg-primary/10 transition-colors"
+              aria-label="Toggle theme"
             >
               {theme === "light" ? (
                 <Moon className="h-5 w-5" />
               ) : (
                 <Sun className="h-5 w-5" />
               )}
-            </button>
+            </motion.button>
           </div>
         </div>
       </div>

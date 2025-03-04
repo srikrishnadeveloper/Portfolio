@@ -1,6 +1,6 @@
 
 import { motion } from "framer-motion";
-import { Github, ArrowRight } from "lucide-react";
+import { Github, ArrowRight, ExternalLink } from "lucide-react";
 
 const projects = [
   {
@@ -45,6 +45,83 @@ const projects = [
   }
 ];
 
+const ProjectCard = ({ project, index }: { project: typeof projects[0]; index: number }) => {
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.5, delay: index * 0.1 }}
+      whileHover={{ y: -10 }}
+      className="glass-card overflow-hidden group"
+    >
+      <div className="aspect-video w-full overflow-hidden relative">
+        <motion.img
+          src={project.image}
+          alt={project.title}
+          className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-center p-4">
+          <div className="flex gap-4">
+            <a
+              href={project.github}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="p-2 rounded-full bg-background/30 backdrop-blur-sm hover:bg-background/50 transition-colors"
+              aria-label="View GitHub repository"
+            >
+              <Github className="w-5 h-5" />
+            </a>
+            <a
+              href={project.demo}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="p-2 rounded-full bg-background/30 backdrop-blur-sm hover:bg-background/50 transition-colors"
+              aria-label="View live demo"
+            >
+              <ExternalLink className="w-5 h-5" />
+            </a>
+          </div>
+        </div>
+      </div>
+      <div className="p-6 space-y-4">
+        <h3 className="text-xl font-semibold group-hover:text-primary transition-colors">{project.title}</h3>
+        <p className="text-muted-foreground">{project.description}</p>
+        <div className="flex flex-wrap gap-2">
+          {project.tech.map((tech) => (
+            <span
+              key={tech}
+              className="px-3 py-1 text-xs rounded-full bg-primary/10 border border-primary/20"
+            >
+              {tech}
+            </span>
+          ))}
+        </div>
+        <div className="flex gap-4 pt-4">
+          <a
+            href={project.github}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 text-sm hover:text-primary transition-colors"
+          >
+            <Github className="w-4 h-4" />
+            GitHub
+          </a>
+          <a
+            href={project.demo}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 text-sm hover:text-primary transition-colors"
+          >
+            Demo
+            <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+          </a>
+        </div>
+      </div>
+    </motion.div>
+  );
+};
+
 const Projects = () => {
   return (
     <section id="projects" className="section-padding bg-secondary/50">
@@ -56,56 +133,13 @@ const Projects = () => {
           transition={{ duration: 0.6 }}
           className="max-w-4xl mx-auto"
         >
-          <h2 className="text-3xl font-bold text-center mb-12">Projects</h2>
+          <h2 className="text-3xl font-bold text-center mb-3">Projects</h2>
+          <p className="text-center text-muted-foreground mb-12 max-w-lg mx-auto">
+            Showcasing my recent work and creative problem-solving abilities
+          </p>
           <div className="grid gap-8 md:grid-cols-2">
-            {projects.map((project) => (
-              <motion.div
-                key={project.title}
-                whileHover={{ y: -5 }}
-                className="glass-card overflow-hidden"
-              >
-                <div className="aspect-video w-full overflow-hidden">
-                  <img
-                    src={project.image}
-                    alt={project.title}
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-                <div className="p-6 space-y-4">
-                  <h3 className="text-xl font-semibold">{project.title}</h3>
-                  <p className="text-muted-foreground">{project.description}</p>
-                  <div className="flex flex-wrap gap-2">
-                    {project.tech.map((tech) => (
-                      <span
-                        key={tech}
-                        className="px-2 py-1 text-xs rounded-full bg-primary/10"
-                      >
-                        {tech}
-                      </span>
-                    ))}
-                  </div>
-                  <div className="flex gap-4 pt-4">
-                    <a
-                      href={project.github}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 text-sm hover:text-primary transition-colors"
-                    >
-                      <Github className="w-4 h-4" />
-                      GitHub
-                    </a>
-                    <a
-                      href={project.demo}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 text-sm hover:text-primary transition-colors"
-                    >
-                      Demo
-                      <ArrowRight className="w-4 h-4" />
-                    </a>
-                  </div>
-                </div>
-              </motion.div>
+            {projects.map((project, index) => (
+              <ProjectCard key={project.title} project={project} index={index} />
             ))}
           </div>
         </motion.div>

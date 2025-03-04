@@ -1,5 +1,6 @@
 
 import { motion } from "framer-motion";
+import { ExternalLink } from "lucide-react";
 
 const certifications = [
   {
@@ -53,19 +54,29 @@ const Certifications = () => {
           transition={{ duration: 0.6 }}
           className="max-w-4xl mx-auto"
         >
-          <h2 className="text-3xl font-bold text-center mb-12">Certifications</h2>
-          <div className="grid gap-8 md:grid-cols-3">
+          <h2 className="text-3xl font-bold text-center mb-3">Certifications</h2>
+          <p className="text-center text-muted-foreground mb-12 max-w-lg mx-auto">
+            Professional credentials highlighting my expertise and continuous learning
+          </p>
+          
+          <div className="grid gap-6 md:grid-cols-3">
             {certifications.map((cert, index) => (
               <motion.div
                 key={cert.title}
-                whileHover={{ y: -5 }}
-                className="glass-card p-6 space-y-4"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.4, delay: index * 0.1 }}
+                whileHover={{ y: -5, boxShadow: "0 10px 25px -5px rgba(0, 0, 0, 0.1)" }}
+                className="glass-card p-6 space-y-4 border border-primary/5 hover:border-primary/20 transition-all duration-300"
               >
-                <div className={`${index === 0 ? 'w-24 h-24' : 'w-16 h-16'} mx-auto mb-4`}>
-                  <img
+                <div className={`${index === 0 ? 'w-24 h-24' : 'w-16 h-16'} mx-auto mb-4 overflow-hidden`}>
+                  <motion.img
                     src={cert.image}
                     alt={cert.title}
                     className="w-full h-full object-contain"
+                    whileHover={{ scale: 1.05 }}
+                    transition={{ type: "spring", stiffness: 300, damping: 10 }}
                   />
                 </div>
                 <div className="text-center">
@@ -80,9 +91,10 @@ const Certifications = () => {
                       href={cert.verify} 
                       target="_blank" 
                       rel="noopener noreferrer"
-                      className="text-xs text-primary hover:underline mt-1 inline-block"
+                      className="inline-flex items-center gap-1 text-xs text-primary hover:underline mt-2"
                     >
                       Verify Certificate
+                      <ExternalLink className="w-3 h-3" />
                     </a>
                   )}
                 </div>
