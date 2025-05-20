@@ -1,5 +1,5 @@
 
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import React, { useState } from "react";
 import { 
   Code2, 
@@ -12,10 +12,9 @@ import {
   LayoutDashboard, 
   Code, 
   BoxSelect,
+  ExternalLink
 } from "lucide-react";
 import { Card } from "@/components/ui/card";
-import { CanvasRevealEffect } from "@/components/ui/canvas-reveal-effect";
-import { ExternalLink } from "lucide-react";
 
 const skills = [
   {
@@ -24,7 +23,8 @@ const skills = [
     filledIcon: <Layout className="w-5 h-5 text-orange-500" />,
     level: 90,
     link: "https://developer.mozilla.org/en-US/docs/Web/HTML",
-    color: [[255, 165, 0]],
+    color: "from-orange-500/20 to-orange-500/5",
+    borderColor: "group-hover:border-orange-500/50",
   },
   {
     name: "CSS",
@@ -32,7 +32,8 @@ const skills = [
     filledIcon: <BoxSelect className="w-5 h-5 text-blue-500" />,
     level: 85,
     link: "https://developer.mozilla.org/en-US/docs/Web/CSS",
-    color: [[59, 130, 246]],
+    color: "from-blue-500/20 to-blue-500/5",
+    borderColor: "group-hover:border-blue-500/50",
   },
   {
     name: "JavaScript",
@@ -40,7 +41,8 @@ const skills = [
     filledIcon: <FileJson className="w-5 h-5 text-yellow-500" />,
     level: 88,
     link: "https://developer.mozilla.org/en-US/docs/Web/JavaScript",
-    color: [[234, 179, 8]],
+    color: "from-yellow-500/20 to-yellow-500/5",
+    borderColor: "group-hover:border-yellow-500/50",
   },
   {
     name: "Flutter",
@@ -48,7 +50,8 @@ const skills = [
     filledIcon: <Code2 className="w-5 h-5 text-blue-400" />,
     level: 80,
     link: "https://flutter.dev",
-    color: [[96, 165, 250]],
+    color: "from-blue-400/20 to-blue-400/5",
+    borderColor: "group-hover:border-blue-400/50",
   },
   {
     name: "Dart",
@@ -56,7 +59,8 @@ const skills = [
     filledIcon: <Code className="w-5 h-5 text-cyan-500" />,
     level: 78,
     link: "https://dart.dev",
-    color: [[6, 182, 212]],
+    color: "from-cyan-500/20 to-cyan-500/5",
+    borderColor: "group-hover:border-cyan-500/50",
   },
   {
     name: "MongoDB",
@@ -64,7 +68,8 @@ const skills = [
     filledIcon: <Database className="w-5 h-5 text-green-600" />,
     level: 82,
     link: "https://www.mongodb.com",
-    color: [[22, 163, 74]],
+    color: "from-green-600/20 to-green-600/5",
+    borderColor: "group-hover:border-green-600/50",
   },
   {
     name: "Node.js",
@@ -72,7 +77,8 @@ const skills = [
     filledIcon: <Server className="w-5 h-5 text-green-500" />,
     level: 85,
     link: "https://nodejs.org",
-    color: [[34, 197, 94]],
+    color: "from-green-500/20 to-green-500/5",
+    borderColor: "group-hover:border-green-500/50",
   },
   {
     name: "React",
@@ -80,7 +86,8 @@ const skills = [
     filledIcon: <Blocks className="w-5 h-5 text-blue-600" />,
     level: 87,
     link: "https://reactjs.org",
-    color: [[37, 99, 235]],
+    color: "from-blue-600/20 to-blue-600/5",
+    borderColor: "group-hover:border-blue-600/50",
   },
   {
     name: "Express",
@@ -88,7 +95,8 @@ const skills = [
     filledIcon: <Server className="w-5 h-5 text-gray-600" />,
     level: 83,
     link: "https://expressjs.com",
-    color: [[75, 85, 99]],
+    color: "from-gray-600/20 to-gray-600/5",
+    borderColor: "group-hover:border-gray-600/50",
   },
   {
     name: "Angular",
@@ -96,7 +104,8 @@ const skills = [
     filledIcon: <Code2 className="w-5 h-5 text-red-500" />,
     level: 75,
     link: "https://angular.io",
-    color: [[239, 68, 68]],
+    color: "from-red-500/20 to-red-500/5",
+    borderColor: "group-hover:border-red-500/50",
   },
   {
     name: "GitHub",
@@ -104,7 +113,8 @@ const skills = [
     filledIcon: <Github className="w-5 h-5 text-gray-700" />,
     level: 90,
     link: "https://github.com",
-    color: [[55, 65, 81]],
+    color: "from-gray-700/20 to-gray-700/5",
+    borderColor: "group-hover:border-gray-700/50",
   },
   {
     name: "Next.js",
@@ -112,7 +122,8 @@ const skills = [
     filledIcon: <LayoutDashboard className="w-5 h-5 text-black dark:text-white" />,
     level: 85,
     link: "https://nextjs.org",
-    color: [[0, 0, 0]],
+    color: "from-gray-900/20 to-gray-900/5 dark:from-white/20 dark:to-white/5",
+    borderColor: "group-hover:border-gray-900/50 dark:group-hover:border-white/50",
   },
 ];
 
@@ -121,29 +132,13 @@ const SkillCard = ({ skill }: { skill: typeof skills[0] }) => {
   
   return (
     <Card
-      className="relative overflow-hidden h-44 border border-primary/10 hover:border-primary/20 transition-all duration-300"
+      className={`group relative overflow-hidden h-44 border border-primary/10 transition-all duration-300 ${skill.borderColor}`}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
     >
-      <AnimatePresence>
-        {hovered && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className="absolute inset-0 z-0"
-          >
-            <CanvasRevealEffect
-              colors={[skill.color[0]]}
-              animationSpeed={0.8}
-              containerClassName="bg-transparent dark:bg-transparent"
-              dotSize={2}
-              opacities={[0.2, 0.2, 0.2, 0.3, 0.3, 0.4, 0.5, 0.6, 0.8, 1]}
-              showGradient={false}
-            />
-          </motion.div>
-        )}
-      </AnimatePresence>
+      <div 
+        className={`absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-gradient-to-br ${skill.color}`}
+      />
       
       <div className="p-6 flex flex-col h-full justify-between relative z-10">
         <div className="flex items-center justify-between">
@@ -181,6 +176,35 @@ const SkillCard = ({ skill }: { skill: typeof skills[0] }) => {
           </div>
         </div>
       </div>
+
+      {/* Animated dots background for a subtle effect */}
+      {hovered && (
+        <div className="absolute inset-0 z-0 overflow-hidden opacity-30">
+          <div className="absolute inset-0 grid grid-cols-12 gap-2">
+            {Array.from({ length: 60 }).map((_, i) => (
+              <motion.div
+                key={i}
+                className="w-1 h-1 rounded-full bg-primary"
+                initial={{ opacity: 0, scale: 0 }}
+                animate={{ 
+                  opacity: Math.random() * 0.7 + 0.3, 
+                  scale: Math.random() * 0.5 + 0.5 
+                }}
+                transition={{ 
+                  duration: Math.random() * 2 + 0.5, 
+                  repeat: Infinity, 
+                  repeatType: "reverse" 
+                }}
+                style={{
+                  position: 'absolute',
+                  top: `${Math.random() * 100}%`,
+                  left: `${Math.random() * 100}%`,
+                }}
+              />
+            ))}
+          </div>
+        </div>
+      )}
     </Card>
   );
 };
