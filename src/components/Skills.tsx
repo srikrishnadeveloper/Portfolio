@@ -1,21 +1,21 @@
 
-import { motion } from "framer-motion";
-import {
-  Code2,
-  Database,
-  FileJson,
-  Github,
-  Globe,
-  Layout,
-  Search,
-  Server,
-  Blocks,
-  LayoutDashboard,
-  Smartphone,
-  Code,
+import { motion, AnimatePresence } from "framer-motion";
+import React, { useState } from "react";
+import { 
+  Code2, 
+  Database, 
+  FileJson, 
+  Github, 
+  Layout, 
+  Server, 
+  Blocks, 
+  LayoutDashboard, 
+  Code, 
   BoxSelect,
 } from "lucide-react";
-import SkillCard from "./SkillCard";
+import { Card } from "@/components/ui/card";
+import { CanvasRevealEffect } from "@/components/ui/canvas-reveal-effect";
+import { ExternalLink } from "lucide-react";
 
 const skills = [
   {
@@ -24,6 +24,7 @@ const skills = [
     filledIcon: <Layout className="w-5 h-5 text-orange-500" />,
     level: 90,
     link: "https://developer.mozilla.org/en-US/docs/Web/HTML",
+    color: [[255, 165, 0]],
   },
   {
     name: "CSS",
@@ -31,6 +32,7 @@ const skills = [
     filledIcon: <BoxSelect className="w-5 h-5 text-blue-500" />,
     level: 85,
     link: "https://developer.mozilla.org/en-US/docs/Web/CSS",
+    color: [[59, 130, 246]],
   },
   {
     name: "JavaScript",
@@ -38,6 +40,7 @@ const skills = [
     filledIcon: <FileJson className="w-5 h-5 text-yellow-500" />,
     level: 88,
     link: "https://developer.mozilla.org/en-US/docs/Web/JavaScript",
+    color: [[234, 179, 8]],
   },
   {
     name: "Flutter",
@@ -45,6 +48,7 @@ const skills = [
     filledIcon: <Code2 className="w-5 h-5 text-blue-400" />,
     level: 80,
     link: "https://flutter.dev",
+    color: [[96, 165, 250]],
   },
   {
     name: "Dart",
@@ -52,6 +56,7 @@ const skills = [
     filledIcon: <Code className="w-5 h-5 text-cyan-500" />,
     level: 78,
     link: "https://dart.dev",
+    color: [[6, 182, 212]],
   },
   {
     name: "MongoDB",
@@ -59,6 +64,7 @@ const skills = [
     filledIcon: <Database className="w-5 h-5 text-green-600" />,
     level: 82,
     link: "https://www.mongodb.com",
+    color: [[22, 163, 74]],
   },
   {
     name: "Node.js",
@@ -66,6 +72,7 @@ const skills = [
     filledIcon: <Server className="w-5 h-5 text-green-500" />,
     level: 85,
     link: "https://nodejs.org",
+    color: [[34, 197, 94]],
   },
   {
     name: "React",
@@ -73,6 +80,7 @@ const skills = [
     filledIcon: <Blocks className="w-5 h-5 text-blue-600" />,
     level: 87,
     link: "https://reactjs.org",
+    color: [[37, 99, 235]],
   },
   {
     name: "Express",
@@ -80,6 +88,7 @@ const skills = [
     filledIcon: <Server className="w-5 h-5 text-gray-600" />,
     level: 83,
     link: "https://expressjs.com",
+    color: [[75, 85, 99]],
   },
   {
     name: "Angular",
@@ -87,6 +96,7 @@ const skills = [
     filledIcon: <Code2 className="w-5 h-5 text-red-500" />,
     level: 75,
     link: "https://angular.io",
+    color: [[239, 68, 68]],
   },
   {
     name: "GitHub",
@@ -94,13 +104,7 @@ const skills = [
     filledIcon: <Github className="w-5 h-5 text-gray-700" />,
     level: 90,
     link: "https://github.com",
-  },
-  {
-    name: "SEO",
-    icon: <Search className="w-5 h-5 text-blue-800/70" />,
-    filledIcon: <Search className="w-5 h-5 text-blue-800" />,
-    level: 80,
-    link: "https://developers.google.com/search",
+    color: [[55, 65, 81]],
   },
   {
     name: "Next.js",
@@ -108,8 +112,78 @@ const skills = [
     filledIcon: <LayoutDashboard className="w-5 h-5 text-black dark:text-white" />,
     level: 85,
     link: "https://nextjs.org",
+    color: [[0, 0, 0]],
   },
 ];
+
+const SkillCard = ({ skill }: { skill: typeof skills[0] }) => {
+  const [hovered, setHovered] = useState(false);
+  
+  return (
+    <Card
+      className="relative overflow-hidden h-44 border border-primary/10 hover:border-primary/20 transition-all duration-300"
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
+    >
+      <AnimatePresence>
+        {hovered && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="absolute inset-0 z-0"
+          >
+            <CanvasRevealEffect
+              colors={[skill.color[0]]}
+              animationSpeed={0.8}
+              containerClassName="bg-transparent dark:bg-transparent"
+              dotSize={2}
+              opacities={[0.2, 0.2, 0.2, 0.3, 0.3, 0.4, 0.5, 0.6, 0.8, 1]}
+              showGradient={false}
+            />
+          </motion.div>
+        )}
+      </AnimatePresence>
+      
+      <div className="p-6 flex flex-col h-full justify-between relative z-10">
+        <div className="flex items-center justify-between">
+          <div className="flex items-center gap-2">
+            <span className="p-2 rounded-full bg-primary/10 transition-all duration-300">
+              {hovered ? skill.filledIcon : skill.icon}
+            </span>
+            <h3 className="font-medium">{skill.name}</h3>
+          </div>
+          
+          {skill.link && (
+            <a 
+              href={skill.link} 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="text-primary/70 hover:text-primary transition-colors"
+              aria-label={`Learn more about ${skill.name}`}
+            >
+              <ExternalLink className="w-4 h-4" />
+            </a>
+          )}
+        </div>
+        
+        <div className="w-full">
+          <div className="text-sm text-muted-foreground mb-2">
+            Proficiency
+          </div>
+          <div className="w-full h-2 bg-primary/10 rounded-full overflow-hidden">
+            <motion.div 
+              className="h-full bg-primary"
+              initial={{ width: 0 }}
+              animate={{ width: `${skill.level}%` }}
+              transition={{ duration: 1, ease: "easeOut" }}
+            />
+          </div>
+        </div>
+      </div>
+    </Card>
+  );
+};
 
 const Skills = () => {
   return (
@@ -129,14 +203,7 @@ const Skills = () => {
           
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
             {skills.map((skill) => (
-              <SkillCard 
-                key={skill.name} 
-                name={skill.name} 
-                icon={skill.icon} 
-                filledIcon={skill.filledIcon}
-                level={skill.level} 
-                link={skill.link}
-              />
+              <SkillCard key={skill.name} skill={skill} />
             ))}
           </div>
         </motion.div>
