@@ -23,8 +23,9 @@ const skills = [
     filledIcon: <Layout className="w-5 h-5 text-orange-500" />,
     level: 90,
     link: "https://developer.mozilla.org/en-US/docs/Web/HTML",
-    color: "from-orange-500/20 to-orange-500/5",
+    color: "bg-gradient-to-br from-orange-500/20 to-orange-500/5",
     borderColor: "group-hover:border-orange-500/50",
+    dotColor: "bg-orange-500"
   },
   {
     name: "CSS",
@@ -32,8 +33,9 @@ const skills = [
     filledIcon: <BoxSelect className="w-5 h-5 text-blue-500" />,
     level: 85,
     link: "https://developer.mozilla.org/en-US/docs/Web/CSS",
-    color: "from-blue-500/20 to-blue-500/5",
+    color: "bg-gradient-to-br from-blue-500/20 to-blue-500/5",
     borderColor: "group-hover:border-blue-500/50",
+    dotColor: "bg-blue-500"
   },
   {
     name: "JavaScript",
@@ -41,8 +43,9 @@ const skills = [
     filledIcon: <FileJson className="w-5 h-5 text-yellow-500" />,
     level: 88,
     link: "https://developer.mozilla.org/en-US/docs/Web/JavaScript",
-    color: "from-yellow-500/20 to-yellow-500/5",
+    color: "bg-gradient-to-br from-yellow-500/20 to-yellow-500/5",
     borderColor: "group-hover:border-yellow-500/50",
+    dotColor: "bg-yellow-500"
   },
   {
     name: "Flutter",
@@ -50,8 +53,9 @@ const skills = [
     filledIcon: <Code2 className="w-5 h-5 text-blue-400" />,
     level: 80,
     link: "https://flutter.dev",
-    color: "from-blue-400/20 to-blue-400/5",
+    color: "bg-gradient-to-br from-blue-400/20 to-blue-400/5",
     borderColor: "group-hover:border-blue-400/50",
+    dotColor: "bg-blue-400"
   },
   {
     name: "Dart",
@@ -59,8 +63,9 @@ const skills = [
     filledIcon: <Code className="w-5 h-5 text-cyan-500" />,
     level: 78,
     link: "https://dart.dev",
-    color: "from-cyan-500/20 to-cyan-500/5",
+    color: "bg-gradient-to-br from-cyan-500/20 to-cyan-500/5",
     borderColor: "group-hover:border-cyan-500/50",
+    dotColor: "bg-cyan-500"
   },
   {
     name: "MongoDB",
@@ -68,8 +73,9 @@ const skills = [
     filledIcon: <Database className="w-5 h-5 text-green-600" />,
     level: 82,
     link: "https://www.mongodb.com",
-    color: "from-green-600/20 to-green-600/5",
+    color: "bg-gradient-to-br from-green-600/20 to-green-600/5",
     borderColor: "group-hover:border-green-600/50",
+    dotColor: "bg-green-600"
   },
   {
     name: "Node.js",
@@ -77,8 +83,9 @@ const skills = [
     filledIcon: <Server className="w-5 h-5 text-green-500" />,
     level: 85,
     link: "https://nodejs.org",
-    color: "from-green-500/20 to-green-500/5",
+    color: "bg-gradient-to-br from-green-500/20 to-green-500/5",
     borderColor: "group-hover:border-green-500/50",
+    dotColor: "bg-green-500"
   },
   {
     name: "React",
@@ -86,8 +93,9 @@ const skills = [
     filledIcon: <Blocks className="w-5 h-5 text-blue-600" />,
     level: 87,
     link: "https://reactjs.org",
-    color: "from-blue-600/20 to-blue-600/5",
+    color: "bg-gradient-to-br from-blue-600/20 to-blue-600/5",
     borderColor: "group-hover:border-blue-600/50",
+    dotColor: "bg-blue-600"
   },
   {
     name: "Express",
@@ -95,8 +103,9 @@ const skills = [
     filledIcon: <Server className="w-5 h-5 text-gray-600" />,
     level: 83,
     link: "https://expressjs.com",
-    color: "from-gray-600/20 to-gray-600/5",
+    color: "bg-gradient-to-br from-gray-600/20 to-gray-600/5",
     borderColor: "group-hover:border-gray-600/50",
+    dotColor: "bg-gray-600"
   },
   {
     name: "Angular",
@@ -104,8 +113,9 @@ const skills = [
     filledIcon: <Code2 className="w-5 h-5 text-red-500" />,
     level: 75,
     link: "https://angular.io",
-    color: "from-red-500/20 to-red-500/5",
+    color: "bg-gradient-to-br from-red-500/20 to-red-500/5",
     borderColor: "group-hover:border-red-500/50",
+    dotColor: "bg-red-500"
   },
   {
     name: "GitHub",
@@ -113,8 +123,9 @@ const skills = [
     filledIcon: <Github className="w-5 h-5 text-gray-700" />,
     level: 90,
     link: "https://github.com",
-    color: "from-gray-700/20 to-gray-700/5",
+    color: "bg-gradient-to-br from-gray-700/20 to-gray-700/5",
     borderColor: "group-hover:border-gray-700/50",
+    dotColor: "bg-gray-700"
   },
   {
     name: "Next.js",
@@ -122,8 +133,9 @@ const skills = [
     filledIcon: <LayoutDashboard className="w-5 h-5 text-black dark:text-white" />,
     level: 85,
     link: "https://nextjs.org",
-    color: "from-gray-900/20 to-gray-900/5 dark:from-white/20 dark:to-white/5",
+    color: "bg-gradient-to-br from-gray-900/20 to-gray-900/5 dark:from-white/20 dark:to-white/5",
     borderColor: "group-hover:border-gray-900/50 dark:group-hover:border-white/50",
+    dotColor: "bg-gray-900 dark:bg-white"
   },
 ];
 
@@ -137,7 +149,7 @@ const SkillCard = ({ skill }: { skill: typeof skills[0] }) => {
       onMouseLeave={() => setHovered(false)}
     >
       <div 
-        className={`absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-gradient-to-br ${skill.color}`}
+        className={`absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 ${skill.color}`}
       />
       
       <div className="p-6 flex flex-col h-full justify-between relative z-10">
@@ -168,7 +180,7 @@ const SkillCard = ({ skill }: { skill: typeof skills[0] }) => {
           </div>
           <div className="w-full h-2 bg-primary/10 rounded-full overflow-hidden">
             <motion.div 
-              className="h-full bg-primary"
+              className={`h-full ${skill.dotColor}`}
               initial={{ width: 0 }}
               animate={{ width: `${skill.level}%` }}
               transition={{ duration: 1, ease: "easeOut" }}
@@ -180,29 +192,26 @@ const SkillCard = ({ skill }: { skill: typeof skills[0] }) => {
       {/* Animated dots background for a subtle effect */}
       {hovered && (
         <div className="absolute inset-0 z-0 overflow-hidden opacity-30">
-          <div className="absolute inset-0 grid grid-cols-12 gap-2">
-            {Array.from({ length: 60 }).map((_, i) => (
-              <motion.div
-                key={i}
-                className="w-1 h-1 rounded-full bg-primary"
-                initial={{ opacity: 0, scale: 0 }}
-                animate={{ 
-                  opacity: Math.random() * 0.7 + 0.3, 
-                  scale: Math.random() * 0.5 + 0.5 
-                }}
-                transition={{ 
-                  duration: Math.random() * 2 + 0.5, 
-                  repeat: Infinity, 
-                  repeatType: "reverse" 
-                }}
-                style={{
-                  position: 'absolute',
-                  top: `${Math.random() * 100}%`,
-                  left: `${Math.random() * 100}%`,
-                }}
-              />
-            ))}
-          </div>
+          {Array.from({ length: 20 }).map((_, i) => (
+            <motion.div
+              key={i}
+              className={`w-1 h-1 rounded-full absolute ${skill.dotColor}`}
+              initial={{ opacity: 0, scale: 0 }}
+              animate={{ 
+                opacity: Math.random() * 0.7 + 0.3, 
+                scale: Math.random() * 0.5 + 0.5 
+              }}
+              transition={{ 
+                duration: Math.random() * 2 + 0.5, 
+                repeat: Infinity, 
+                repeatType: "reverse" 
+              }}
+              style={{
+                top: `${Math.random() * 100}%`,
+                left: `${Math.random() * 100}%`,
+              }}
+            />
+          ))}
         </div>
       )}
     </Card>
