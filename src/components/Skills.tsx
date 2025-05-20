@@ -113,7 +113,7 @@ const skills = [
 
 const Skills = () => {
   return (
-    <section id="skills" className="section-padding">
+    <section id="skills" className="section-padding relative overflow-hidden">
       <div className="container mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -126,6 +126,7 @@ const Skills = () => {
           <p className="text-center text-muted-foreground mb-12 max-w-lg mx-auto">
             A showcase of my technical expertise and proficiency in various technologies
           </p>
+          
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
             {skills.map((skill) => (
               <SkillCard 
