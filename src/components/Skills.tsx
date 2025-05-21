@@ -12,10 +12,11 @@ import {
   LayoutDashboard, 
   Code, 
   BoxSelect,
+  ExternalLink 
 } from "lucide-react";
 import { Card } from "@/components/ui/card";
 import { CanvasRevealEffect } from "@/components/ui/canvas-reveal-effect";
-import { ExternalLink } from "lucide-react";
+import SkillCard from "./SkillCard";
 
 const skills = [
   {
@@ -116,75 +117,6 @@ const skills = [
   },
 ];
 
-const SkillCard = ({ skill }: { skill: typeof skills[0] }) => {
-  const [hovered, setHovered] = useState(false);
-  
-  return (
-    <Card
-      className="relative overflow-hidden h-44 border border-primary/10 hover:border-primary/20 transition-all duration-300"
-      onMouseEnter={() => setHovered(true)}
-      onMouseLeave={() => setHovered(false)}
-    >
-      <AnimatePresence>
-        {hovered && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className="absolute inset-0 z-0"
-          >
-            <CanvasRevealEffect
-              colors={[skill.color[0]]}
-              animationSpeed={0.8}
-              containerClassName="bg-transparent dark:bg-transparent"
-              dotSize={2}
-              opacities={[0.2, 0.2, 0.2, 0.3, 0.3, 0.4, 0.5, 0.6, 0.8, 1]}
-              showGradient={false}
-            />
-          </motion.div>
-        )}
-      </AnimatePresence>
-      
-      <div className="p-6 flex flex-col h-full justify-between relative z-10">
-        <div className="flex items-center justify-between">
-          <div className="flex items-center gap-2">
-            <span className="p-2 rounded-full bg-primary/10 transition-all duration-300">
-              {hovered ? skill.filledIcon : skill.icon}
-            </span>
-            <h3 className="font-medium">{skill.name}</h3>
-          </div>
-          
-          {skill.link && (
-            <a 
-              href={skill.link} 
-              target="_blank" 
-              rel="noopener noreferrer" 
-              className="text-primary/70 hover:text-primary transition-colors"
-              aria-label={`Learn more about ${skill.name}`}
-            >
-              <ExternalLink className="w-4 h-4" />
-            </a>
-          )}
-        </div>
-        
-        <div className="w-full">
-          <div className="text-sm text-muted-foreground mb-2">
-            Proficiency
-          </div>
-          <div className="w-full h-2 bg-primary/10 rounded-full overflow-hidden">
-            <motion.div 
-              className="h-full bg-primary"
-              initial={{ width: 0 }}
-              animate={{ width: `${skill.level}%` }}
-              transition={{ duration: 1, ease: "easeOut" }}
-            />
-          </div>
-        </div>
-      </div>
-    </Card>
-  );
-};
-
 const Skills = () => {
   return (
     <section id="skills" className="section-padding relative overflow-hidden">
@@ -203,7 +135,14 @@ const Skills = () => {
           
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
             {skills.map((skill) => (
-              <SkillCard key={skill.name} skill={skill} />
+              <SkillCard 
+                key={skill.name} 
+                name={skill.name}
+                icon={skill.icon}
+                filledIcon={skill.filledIcon}
+                level={skill.level}
+                link={skill.link}
+              />
             ))}
           </div>
         </motion.div>
