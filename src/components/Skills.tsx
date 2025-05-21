@@ -1,132 +1,214 @@
 
-import React from "react";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
+import React, { useState } from "react";
+import { 
+  Code2, 
+  Database, 
+  FileJson, 
+  Github, 
+  Layout, 
+  Server, 
+  Blocks, 
+  LayoutDashboard, 
+  Code, 
+  BoxSelect,
+} from "lucide-react";
+import { Card } from "@/components/ui/card";
 import { CanvasRevealEffect } from "@/components/ui/canvas-reveal-effect";
+import { ExternalLink } from "lucide-react";
 
-const skillCategories = [
+const skills = [
   {
-    title: "Frontend Development",
-    skills: ["React", "Vue.js", "Next.js", "TypeScript", "Tailwind CSS"],
-    color: "bg-emerald-900",
-    animationSpeed: 5.1,
-    colors: [[0, 255, 255]]
+    name: "HTML",
+    icon: <Layout className="w-5 h-5 text-orange-500/70" />,
+    filledIcon: <Layout className="w-5 h-5 text-orange-500" />,
+    level: 90,
+    link: "https://developer.mozilla.org/en-US/docs/Web/HTML",
+    color: [[255, 165, 0]],
   },
   {
-    title: "Backend Development",
-    skills: ["Node.js", "Express", "MongoDB", "PostgreSQL", "GraphQL"],
-    color: "bg-black",
-    animationSpeed: 3,
-    colors: [
-      [236, 72, 153],
-      [232, 121, 249],
-    ]
+    name: "CSS",
+    icon: <BoxSelect className="w-5 h-5 text-blue-500/70" />,
+    filledIcon: <BoxSelect className="w-5 h-5 text-blue-500" />,
+    level: 85,
+    link: "https://developer.mozilla.org/en-US/docs/Web/CSS",
+    color: [[59, 130, 246]],
   },
   {
-    title: "Other Skills",
-    skills: ["Git", "Docker", "AWS", "CI/CD", "Testing"],
-    color: "bg-sky-600",
-    animationSpeed: 3,
-    colors: [[125, 211, 252]]
-  }
+    name: "JavaScript",
+    icon: <FileJson className="w-5 h-5 text-yellow-500/70" />,
+    filledIcon: <FileJson className="w-5 h-5 text-yellow-500" />,
+    level: 88,
+    link: "https://developer.mozilla.org/en-US/docs/Web/JavaScript",
+    color: [[234, 179, 8]],
+  },
+  {
+    name: "Flutter",
+    icon: <Code2 className="w-5 h-5 text-blue-400/70" />,
+    filledIcon: <Code2 className="w-5 h-5 text-blue-400" />,
+    level: 80,
+    link: "https://flutter.dev",
+    color: [[96, 165, 250]],
+  },
+  {
+    name: "Dart",
+    icon: <Code className="w-5 h-5 text-cyan-500/70" />,
+    filledIcon: <Code className="w-5 h-5 text-cyan-500" />,
+    level: 78,
+    link: "https://dart.dev",
+    color: [[6, 182, 212]],
+  },
+  {
+    name: "MongoDB",
+    icon: <Database className="w-5 h-5 text-green-600/70" />,
+    filledIcon: <Database className="w-5 h-5 text-green-600" />,
+    level: 82,
+    link: "https://www.mongodb.com",
+    color: [[22, 163, 74]],
+  },
+  {
+    name: "Node.js",
+    icon: <Server className="w-5 h-5 text-green-500/70" />,
+    filledIcon: <Server className="w-5 h-5 text-green-500" />,
+    level: 85,
+    link: "https://nodejs.org",
+    color: [[34, 197, 94]],
+  },
+  {
+    name: "React",
+    icon: <Blocks className="w-5 h-5 text-blue-600/70" />,
+    filledIcon: <Blocks className="w-5 h-5 text-blue-600" />,
+    level: 87,
+    link: "https://reactjs.org",
+    color: [[37, 99, 235]],
+  },
+  {
+    name: "Express",
+    icon: <Server className="w-5 h-5 text-gray-600/70" />,
+    filledIcon: <Server className="w-5 h-5 text-gray-600" />,
+    level: 83,
+    link: "https://expressjs.com",
+    color: [[75, 85, 99]],
+  },
+  {
+    name: "Angular",
+    icon: <Code2 className="w-5 h-5 text-red-500/70" />,
+    filledIcon: <Code2 className="w-5 h-5 text-red-500" />,
+    level: 75,
+    link: "https://angular.io",
+    color: [[239, 68, 68]],
+  },
+  {
+    name: "GitHub",
+    icon: <Github className="w-5 h-5 text-gray-700/70" />,
+    filledIcon: <Github className="w-5 h-5 text-gray-700" />,
+    level: 90,
+    link: "https://github.com",
+    color: [[55, 65, 81]],
+  },
+  {
+    name: "Next.js",
+    icon: <LayoutDashboard className="w-5 h-5 text-black/70 dark:text-white/70" />,
+    filledIcon: <LayoutDashboard className="w-5 h-5 text-black dark:text-white" />,
+    level: 85,
+    link: "https://nextjs.org",
+    color: [[0, 0, 0]],
+  },
 ];
 
-const Skills = () => {
-  return (
-    <section className="section-padding bg-background" id="skills">
-      <div className="container mx-auto">
-        <motion.h2 
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          className="text-3xl md:text-4xl font-bold text-center mb-12"
-        >
-          Skills & Expertise
-        </motion.h2>
-        
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {skillCategories.map((category, index) => (
-            <SkillCard 
-              key={index} 
-              title={category.title} 
-              skills={category.skills} 
-              color={category.color}
-              animationSpeed={category.animationSpeed}
-              colors={category.colors}
-            />
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-};
-
-const SkillCard = ({ 
-  title, 
-  skills, 
-  color,
-  animationSpeed,
-  colors
-}: {
-  title: string;
-  skills: string[];
-  color: string;
-  animationSpeed: number;
-  colors: number[][];
-}) => {
-  const [hovered, setHovered] = React.useState(false);
+const SkillCard = ({ skill }: { skill: typeof skills[0] }) => {
+  const [hovered, setHovered] = useState(false);
   
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5, delay: 0.2 }}
-      className="border border-black/[0.2] dark:border-white/[0.2] rounded-lg p-6 h-[24rem] relative"
+    <Card
+      className="relative overflow-hidden h-44 border border-primary/10 hover:border-primary/20 transition-all duration-300"
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
     >
-      {/* Corner Icons */}
-      <div className="absolute h-6 w-6 -top-3 -left-3 dark:text-white text-black">+</div>
-      <div className="absolute h-6 w-6 -bottom-3 -left-3 dark:text-white text-black">+</div>
-      <div className="absolute h-6 w-6 -top-3 -right-3 dark:text-white text-black">+</div>
-      <div className="absolute h-6 w-6 -bottom-3 -right-3 dark:text-white text-black">+</div>
+      <AnimatePresence>
+        {hovered && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="absolute inset-0 z-0"
+          >
+            <CanvasRevealEffect
+              colors={[skill.color[0]]}
+              animationSpeed={0.8}
+              containerClassName="bg-transparent dark:bg-transparent"
+              dotSize={2}
+              opacities={[0.2, 0.2, 0.2, 0.3, 0.3, 0.4, 0.5, 0.6, 0.8, 1]}
+              showGradient={false}
+            />
+          </motion.div>
+        )}
+      </AnimatePresence>
       
-      {/* Canvas Effect */}
-      {hovered && (
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          className="absolute inset-0 z-0 rounded-lg overflow-hidden"
-        >
-          <CanvasRevealEffect
-            animationSpeed={animationSpeed}
-            containerClassName={color}
-            colors={colors}
-            dotSize={2}
-          />
-        </motion.div>
-      )}
-      
-      {/* Content */}
-      <div className="relative z-10">
-        <h3 className={`text-xl font-semibold mb-4 ${hovered ? "text-white" : ""}`}>
-          {title}
-        </h3>
-        <ul className="space-y-2">
-          {skills.map((skill, index) => (
-            <motion.li 
-              key={index}
-              initial={{ opacity: 0, x: -10 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.3, delay: 0.1 * index }}
-              className={`flex items-center ${hovered ? "text-white" : ""}`}
+      <div className="p-6 flex flex-col h-full justify-between relative z-10">
+        <div className="flex items-center justify-between">
+          <div className="flex items-center gap-2">
+            <span className="p-2 rounded-full bg-primary/10 transition-all duration-300">
+              {hovered ? skill.filledIcon : skill.icon}
+            </span>
+            <h3 className="font-medium">{skill.name}</h3>
+          </div>
+          
+          {skill.link && (
+            <a 
+              href={skill.link} 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="text-primary/70 hover:text-primary transition-colors"
+              aria-label={`Learn more about ${skill.name}`}
             >
-              <span className="mr-2">•</span>
-              {skill}
-            </motion.li>
-          ))}
-        </ul>
+              <ExternalLink className="w-4 h-4" />
+            </a>
+          )}
+        </div>
+        
+        <div className="w-full">
+          <div className="text-sm text-muted-foreground mb-2">
+            Proficiency
+          </div>
+          <div className="w-full h-2 bg-primary/10 rounded-full overflow-hidden">
+            <motion.div 
+              className="h-full bg-primary"
+              initial={{ width: 0 }}
+              animate={{ width: `${skill.level}%` }}
+              transition={{ duration: 1, ease: "easeOut" }}
+            />
+          </div>
+        </div>
       </div>
-    </motion.div>
+    </Card>
+  );
+};
+
+const Skills = () => {
+  return (
+    <section id="skills" className="section-padding relative overflow-hidden">
+      <div className="container mx-auto">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="max-w-4xl mx-auto"
+        >
+          <h2 className="text-3xl font-bold text-center mb-3">Skills</h2>
+          <p className="text-center text-muted-foreground mb-12 max-w-lg mx-auto">
+            A showcase of my technical expertise and proficiency in various technologies
+          </p>
+          
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+            {skills.map((skill) => (
+              <SkillCard key={skill.name} skill={skill} />
+            ))}
+          </div>
+        </motion.div>
+      </div>
+    </section>
   );
 };
 
