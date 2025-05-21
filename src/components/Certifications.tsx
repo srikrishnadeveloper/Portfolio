@@ -1,8 +1,6 @@
 
-import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { ExternalLink } from "lucide-react";
-import { cn } from "@/lib/utils";
+import { motion } from "framer-motion";
+import { Github, ArrowRight, ExternalLink } from "lucide-react";
 
 interface CertificationProps {
   title: string;
@@ -54,136 +52,63 @@ const certifications: CertificationProps[] = [
   }
 ];
 
-const CertificationCard = ({ certification }: { certification: CertificationProps }) => {
-  const [isHovered, setIsHovered] = useState(false);
-
+const CertificationCard = ({ certification, index }: { certification: CertificationProps; index: number }) => {
   return (
     <motion.div
-      className={cn(
-        "relative h-full overflow-hidden group",
-        "before:absolute before:inset-0 before:rounded-xl before:border before:border-neutral-800/50",
-        "before:transition-all before:duration-300",
-        "hover:before:border-primary/30"
-      )}
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
-      transition={{ duration: 0.4 }}
-      onHoverStart={() => setIsHovered(true)}
-      onHoverEnd={() => setIsHovered(false)}
-      whileHover={{ 
-        scale: 1.02,
-        transition: { type: "spring", stiffness: 400, damping: 10 }
-      }}
+      transition={{ duration: 0.5, delay: index * 0.1 }}
+      whileHover={{ y: -10 }}
+      className="glass-card overflow-hidden group"
     >
-      {/* Radial glow effect on hover */}
-      <div 
-        className={cn(
-          "absolute inset-0 opacity-0 transition-opacity duration-300 rounded-xl",
-          "bg-gradient-to-r from-primary/5 via-primary/10 to-primary/5",
-          isHovered ? "opacity-100" : "opacity-0"
-        )}
-      />
-
-      {/* Dot grid background on hover */}
-      <div 
-        className={cn(
-          "absolute inset-0 bg-grid-primary/[0.02] transition-opacity duration-300 rounded-xl",
-          isHovered ? "opacity-100" : "opacity-0"
-        )}
-      />
-
-      {/* Card content with border animation */}
-      <div className={cn(
-        "relative z-10 h-full rounded-xl border border-neutral-800/50 p-6",
-        "flex flex-col overflow-hidden",
-        "bg-background/80 dark:bg-background/30 backdrop-blur-sm",
-        "transition-all duration-300 ease-out group-hover:border-primary/30",
-        "dark:shadow-none shadow-sm group-hover:shadow-md",
-        "after:absolute after:inset-0 after:rounded-xl after:opacity-0",
-        "after:transition-opacity after:duration-500 group-hover:after:opacity-100",
-        "after:bg-gradient-to-br after:from-neutral-50/5 after:via-primary/5 after:to-neutral-800/5 dark:after:from-neutral-900/5"
-      )}>
-        
-        {/* Certificate image with hover animation */}
-        <div className="flex justify-center mb-4 overflow-hidden rounded-lg h-32 sm:h-40 bg-neutral-100/10 dark:bg-neutral-900/20">
-          <motion.div
-            className="relative w-full h-full"
-            initial={false}
-            animate={{ 
-              scale: isHovered ? 1.05 : 1,
-              opacity: 1 
-            }}
-            transition={{ duration: 0.4 }}
-          >
-            <AnimatePresence initial={false}>
-              {certification.image ? (
-                <motion.img
-                  key={certification.title}
-                  src={certification.image}
-                  alt={certification.title}
-                  className="object-contain w-full h-full p-2 transition-all"
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  exit={{ opacity: 0 }}
-                  transition={{ duration: 0.3 }}
-                />
-              ) : (
-                <motion.div
-                  key={`placeholder-${certification.title}`}
-                  className="flex items-center justify-center w-full h-full bg-neutral-100 dark:bg-neutral-800 animate-pulse"
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 0.7 }}
-                  exit={{ opacity: 0 }}
-                  transition={{ duration: 0.3 }}
-                >
-                  <span className="text-sm text-neutral-400">No image available</span>
-                </motion.div>
-              )}
-            </AnimatePresence>
-          </motion.div>
-        </div>
-        
-        {/* Certificate details with hover animation */}
-        <motion.div 
-          className="flex flex-col flex-grow space-y-1"
-          initial={false}
-          animate={{ 
-            y: isHovered ? 0 : 3,
-            opacity: isHovered ? 1 : 0.9 
-          }}
-          transition={{ duration: 0.3 }}
-        >
-          <h3 className="font-medium text-lg group-hover:text-primary transition-colors duration-300">
-            {certification.title}
-          </h3>
-          <p className="text-sm text-muted-foreground">
-            {certification.issuer}
-          </p>
-          <p className="text-xs text-muted-foreground font-mono">
-            {certification.date}
-          </p>
-          
-          {/* Conditionally render recipient and verification link */}
-          <div className="mt-auto pt-3 space-y-1">
-            {certification.recipient && (
-              <p className="text-xs text-muted-foreground">
-                Issued to: <span className="font-mono">{certification.recipient}</span>
-              </p>
-            )}
-            {certification.verify && (
-              <a 
-                href={certification.verify} 
-                target="_blank" 
+      <div className="aspect-video w-full overflow-hidden relative">
+        <motion.img
+          src={certification.image}
+          alt={certification.title}
+          className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-center p-4">
+          {certification.verify && (
+            <div className="flex gap-4">
+              <a
+                href={certification.verify}
+                target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-1 text-xs font-semibold text-primary hover:underline mt-1 transition-all group"
+                className="p-2 rounded-full bg-background/30 backdrop-blur-sm hover:bg-background/50 transition-colors"
+                aria-label="Verify certification"
               >
-                Verify Certificate
-                <ExternalLink className="w-3 h-3 transition-transform group-hover:translate-x-0.5" />
+                <ExternalLink className="w-5 h-5" />
               </a>
-            )}
+            </div>
+          )}
+        </div>
+      </div>
+      <div className="p-6 space-y-4">
+        <h3 className="text-xl font-semibold group-hover:text-primary transition-colors">{certification.title}</h3>
+        <p className="text-muted-foreground">Issued by {certification.issuer}</p>
+        <p className="text-sm text-muted-foreground font-mono">{certification.date}</p>
+        
+        {certification.recipient && (
+          <div className="text-sm">
+            <span className="text-muted-foreground">Issued to: </span>
+            <span className="font-mono">{certification.recipient}</span>
           </div>
-        </motion.div>
+        )}
+        
+        {certification.verify && (
+          <div className="flex gap-4 pt-2">
+            <a
+              href={certification.verify}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 text-sm hover:text-primary transition-colors"
+            >
+              Verify Certificate
+              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+            </a>
+          </div>
+        )}
       </div>
     </motion.div>
   );
@@ -205,11 +130,12 @@ const Certifications = () => {
             Professional credentials highlighting my expertise and continuous learning
           </p>
           
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
             {certifications.map((certification, index) => (
               <CertificationCard 
                 key={certification.title} 
-                certification={certification} 
+                certification={certification}
+                index={index}
               />
             ))}
           </div>
