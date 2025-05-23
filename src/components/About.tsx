@@ -1,21 +1,28 @@
-
 import { motion } from "framer-motion";
 import { Download, Mail, Github, Linkedin } from "lucide-react";
+import { SparklesCore } from "./ui/sparkles"; // Added import
 
 const About = () => {
   const handleResumeDownload = () => {
-    // Replace with actual resume file when available
-    const link = document.createElement('a');
-    link.href = '/resume.pdf';
-    link.download = 'Srikrishna-Resume.pdf';
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
+    // Open the resume PDF in a new tab
+    window.open('/resume.pdf', '_blank');
   };
 
   return (
-    <section id="about" className="section-padding bg-secondary/50">
-      <div className="container mx-auto">
+    <section id="about" className="section-padding relative"> {/* Added relative positioning */}
+      {/* Added SparklesCore */}
+      <div className="absolute inset-0 w-full h-full">
+        <SparklesCore
+          id="tsparticlesabout"
+          background="transparent"
+          minSize={0.6}
+          maxSize={1.4}
+          particleDensity={100}
+          className="w-full h-full"
+          particleColor="#ffffff" 
+        />
+      </div>
+      <div className="container mx-auto relative"> {/* Added relative positioning for content to be above sparkles */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -67,7 +74,7 @@ const About = () => {
                   className="inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-full bg-primary text-primary-foreground hover:bg-primary/90 transition-colors"
                 >
                   <Download className="w-4 h-4" />
-                  Download Resume
+                  Open Resume
                 </motion.button>
                 
                 <motion.a
@@ -83,7 +90,7 @@ const About = () => {
               
               <div className="flex gap-4 pt-2">
                 <a 
-                  href="https://github.com" 
+                  href="https://github.com/srikrishnadeveloper" 
                   target="_blank" 
                   rel="noopener noreferrer"
                   className="p-2.5 rounded-full bg-muted/80 hover:bg-primary/10 transition-colors"
@@ -91,7 +98,7 @@ const About = () => {
                   <Github className="w-5 h-5" />
                 </a>
                 <a 
-                  href="https://linkedin.com" 
+                  href="https://www.linkedin.com/in/sri-krishna-web-developer" 
                   target="_blank" 
                   rel="noopener noreferrer"
                   className="p-2.5 rounded-full bg-muted/80 hover:bg-primary/10 transition-colors"
@@ -108,3 +115,4 @@ const About = () => {
 };
 
 export default About;
+

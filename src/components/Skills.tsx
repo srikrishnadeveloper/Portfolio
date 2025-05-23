@@ -1,17 +1,22 @@
-
 import { motion } from "framer-motion";
 import React, { useState } from "react";
 import { 
   Code2, 
   Database, 
-  FileJson, 
+  FileCode, 
   Github, 
   Layout, 
   Server, 
   Blocks, 
-  LayoutDashboard, 
-  Code, 
-  BoxSelect,
+  LayoutDashboard,
+  Terminal,
+  PenTool,
+  Palette,
+  FileJson,
+  Component,
+  Settings,
+  FlaskConical,
+  Brain,
   ExternalLink
 } from "lucide-react";
 import { Card } from "@/components/ui/card";
@@ -29,8 +34,8 @@ const skills = [
   },
   {
     name: "CSS",
-    icon: <BoxSelect className="w-5 h-5 text-blue-500/70" />,
-    filledIcon: <BoxSelect className="w-5 h-5 text-blue-500" />,
+    icon: <Palette className="w-5 h-5 text-blue-500/70" />,
+    filledIcon: <Palette className="w-5 h-5 text-blue-500" />,
     level: 85,
     link: "https://developer.mozilla.org/en-US/docs/Web/CSS",
     color: "bg-gradient-to-br from-blue-500/20 to-blue-500/5",
@@ -49,8 +54,8 @@ const skills = [
   },
   {
     name: "Flutter",
-    icon: <Code2 className="w-5 h-5 text-blue-400/70" />,
-    filledIcon: <Code2 className="w-5 h-5 text-blue-400" />,
+    icon: <Component className="w-5 h-5 text-blue-400/70" />,
+    filledIcon: <Component className="w-5 h-5 text-blue-400" />,
     level: 80,
     link: "https://flutter.dev",
     color: "bg-gradient-to-br from-blue-400/20 to-blue-400/5",
@@ -59,8 +64,8 @@ const skills = [
   },
   {
     name: "Dart",
-    icon: <Code className="w-5 h-5 text-cyan-500/70" />,
-    filledIcon: <Code className="w-5 h-5 text-cyan-500" />,
+    icon: <FileCode className="w-5 h-5 text-cyan-500/70" />,
+    filledIcon: <FileCode className="w-5 h-5 text-cyan-500" />,
     level: 78,
     link: "https://dart.dev",
     color: "bg-gradient-to-br from-cyan-500/20 to-cyan-500/5",
@@ -99,8 +104,8 @@ const skills = [
   },
   {
     name: "Express",
-    icon: <Server className="w-5 h-5 text-gray-600/70" />,
-    filledIcon: <Server className="w-5 h-5 text-gray-600" />,
+    icon: <Settings className="w-5 h-5 text-gray-600/70" />,
+    filledIcon: <Settings className="w-5 h-5 text-gray-600" />,
     level: 83,
     link: "https://expressjs.com",
     color: "bg-gradient-to-br from-gray-600/20 to-gray-600/5",
@@ -109,8 +114,8 @@ const skills = [
   },
   {
     name: "Angular",
-    icon: <Code2 className="w-5 h-5 text-red-500/70" />,
-    filledIcon: <Code2 className="w-5 h-5 text-red-500" />,
+    icon: <Component className="w-5 h-5 text-red-500/70" />,
+    filledIcon: <Component className="w-5 h-5 text-red-500" />,
     level: 75,
     link: "https://angular.io",
     color: "bg-gradient-to-br from-red-500/20 to-red-500/5",

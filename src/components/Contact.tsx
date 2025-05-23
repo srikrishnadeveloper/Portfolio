@@ -1,8 +1,8 @@
-
 import { motion } from "framer-motion";
 import { Github, Linkedin } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { useState } from "react";
+import { SparklesCore } from "./ui/sparkles";
 
 interface FormData {
   name: string;
@@ -92,8 +92,19 @@ const Contact = () => {
   };
 
   return (
-    <section id="contact" className="section-padding bg-secondary/50">
-      <div className="container mx-auto">
+    <section id="contact" className="section-padding relative">
+      <div className="absolute inset-0 w-full h-full">
+        <SparklesCore
+          id="tsparticlescontact"
+          background="transparent"
+          minSize={0.6}
+          maxSize={1.4}
+          particleDensity={100}
+          className="w-full h-full"
+          particleColor="#ffffff" 
+        />
+      </div>
+      <div className="container mx-auto relative">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}

@@ -1,6 +1,6 @@
-
 import { motion } from "framer-motion";
 import { Github, ArrowRight, ExternalLink } from "lucide-react";
+import { SparklesCore } from "./ui/sparkles";
 
 interface CertificationProps {
   title: string;
@@ -116,8 +116,19 @@ const CertificationCard = ({ certification, index }: { certification: Certificat
 
 const Certifications = () => {
   return (
-    <section id="certifications" className="section-padding">
-      <div className="container mx-auto">
+    <section id="certifications" className="section-padding relative">
+      <div className="absolute inset-0 w-full h-full">
+        <SparklesCore
+          id="tsparticlescertifications"
+          background="transparent"
+          minSize={0.6}
+          maxSize={1.4}
+          particleDensity={100}
+          className="w-full h-full"
+          particleColor="#ffffff" 
+        />
+      </div>
+      <div className="container mx-auto relative">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
