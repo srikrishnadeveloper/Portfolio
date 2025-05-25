@@ -1,253 +1,139 @@
-import { motion } from "framer-motion";
-import React, { useState } from "react";
-import { 
-  Code2, 
-  Database, 
-  FileCode, 
-  Github, 
-  Layout, 
-  Server, 
-  Blocks, 
-  LayoutDashboard,
-  Terminal,
-  PenTool,
-  Palette,
-  FileJson,
-  Component,
-  Settings,
-  FlaskConical,
-  Brain,
-  ExternalLink
-} from "lucide-react";
-import { Card } from "@/components/ui/card";
+"use client";
 
-const skills = [
-  {
-    name: "HTML",
-    icon: <Layout className="w-5 h-5 text-orange-500/70" />,
-    filledIcon: <Layout className="w-5 h-5 text-orange-500" />,
-    level: 90,
-    link: "https://developer.mozilla.org/en-US/docs/Web/HTML",
-    color: "bg-gradient-to-br from-orange-500/20 to-orange-500/5",
-    borderColor: "group-hover:border-orange-500/50",
-    dotColor: "bg-orange-500"
-  },
-  {
-    name: "CSS",
-    icon: <Palette className="w-5 h-5 text-blue-500/70" />,
-    filledIcon: <Palette className="w-5 h-5 text-blue-500" />,
-    level: 85,
-    link: "https://developer.mozilla.org/en-US/docs/Web/CSS",
-    color: "bg-gradient-to-br from-blue-500/20 to-blue-500/5",
-    borderColor: "group-hover:border-blue-500/50",
-    dotColor: "bg-blue-500"
-  },
-  {
-    name: "JavaScript",
-    icon: <FileJson className="w-5 h-5 text-yellow-500/70" />,
-    filledIcon: <FileJson className="w-5 h-5 text-yellow-500" />,
-    level: 88,
-    link: "https://developer.mozilla.org/en-US/docs/Web/JavaScript",
-    color: "bg-gradient-to-br from-yellow-500/20 to-yellow-500/5",
-    borderColor: "group-hover:border-yellow-500/50",
-    dotColor: "bg-yellow-500"
-  },
-  {
-    name: "Flutter",
-    icon: <Component className="w-5 h-5 text-blue-400/70" />,
-    filledIcon: <Component className="w-5 h-5 text-blue-400" />,
-    level: 80,
-    link: "https://flutter.dev",
-    color: "bg-gradient-to-br from-blue-400/20 to-blue-400/5",
-    borderColor: "group-hover:border-blue-400/50",
-    dotColor: "bg-blue-400"
-  },
-  {
-    name: "Dart",
-    icon: <FileCode className="w-5 h-5 text-cyan-500/70" />,
-    filledIcon: <FileCode className="w-5 h-5 text-cyan-500" />,
-    level: 78,
-    link: "https://dart.dev",
-    color: "bg-gradient-to-br from-cyan-500/20 to-cyan-500/5",
-    borderColor: "group-hover:border-cyan-500/50",
-    dotColor: "bg-cyan-500"
-  },
-  {
-    name: "MongoDB",
-    icon: <Database className="w-5 h-5 text-green-600/70" />,
-    filledIcon: <Database className="w-5 h-5 text-green-600" />,
-    level: 82,
-    link: "https://www.mongodb.com",
-    color: "bg-gradient-to-br from-green-600/20 to-green-600/5",
-    borderColor: "group-hover:border-green-600/50",
-    dotColor: "bg-green-600"
-  },
-  {
-    name: "Node.js",
-    icon: <Server className="w-5 h-5 text-green-500/70" />,
-    filledIcon: <Server className="w-5 h-5 text-green-500" />,
-    level: 85,
-    link: "https://nodejs.org",
-    color: "bg-gradient-to-br from-green-500/20 to-green-500/5",
-    borderColor: "group-hover:border-green-500/50",
-    dotColor: "bg-green-500"
-  },
-  {
-    name: "React",
-    icon: <Blocks className="w-5 h-5 text-blue-600/70" />,
-    filledIcon: <Blocks className="w-5 h-5 text-blue-600" />,
-    level: 87,
-    link: "https://reactjs.org",
-    color: "bg-gradient-to-br from-blue-600/20 to-blue-600/5",
-    borderColor: "group-hover:border-blue-600/50",
-    dotColor: "bg-blue-600"
-  },
-  {
-    name: "Express",
-    icon: <Settings className="w-5 h-5 text-gray-600/70" />,
-    filledIcon: <Settings className="w-5 h-5 text-gray-600" />,
-    level: 83,
-    link: "https://expressjs.com",
-    color: "bg-gradient-to-br from-gray-600/20 to-gray-600/5",
-    borderColor: "group-hover:border-gray-600/50",
-    dotColor: "bg-gray-600"
-  },
-  {
-    name: "Angular",
-    icon: <Component className="w-5 h-5 text-red-500/70" />,
-    filledIcon: <Component className="w-5 h-5 text-red-500" />,
-    level: 75,
-    link: "https://angular.io",
-    color: "bg-gradient-to-br from-red-500/20 to-red-500/5",
-    borderColor: "group-hover:border-red-500/50",
-    dotColor: "bg-red-500"
-  },
-  {
-    name: "GitHub",
-    icon: <Github className="w-5 h-5 text-gray-700/70" />,
-    filledIcon: <Github className="w-5 h-5 text-gray-700" />,
-    level: 90,
-    link: "https://github.com",
-    color: "bg-gradient-to-br from-gray-700/20 to-gray-700/5",
-    borderColor: "group-hover:border-gray-700/50",
-    dotColor: "bg-gray-700"
-  },
-  {
-    name: "Next.js",
-    icon: <LayoutDashboard className="w-5 h-5 text-black/70 dark:text-white/70" />,
-    filledIcon: <LayoutDashboard className="w-5 h-5 text-black dark:text-white" />,
-    level: 85,
-    link: "https://nextjs.org",
-    color: "bg-gradient-to-br from-gray-900/20 to-gray-900/5 dark:from-white/20 dark:to-white/5",
-    borderColor: "group-hover:border-gray-900/50 dark:group-hover:border-white/50",
-    dotColor: "bg-gray-900 dark:bg-white"
-  },
-];
+import React from "react";
+import { AnimatePresence, motion } from "framer-motion";
+import { CanvasRevealEffect } from "@/components/ui/canvas-reveal-effect";
+import { SparklesCore } from "./ui/sparkles"; // Added import for SparklesCore
 
-const SkillCard = ({ skill }: { skill: typeof skills[0] }) => {
-  const [hovered, setHovered] = useState(false);
-  
+function DemoWithCards() {
   return (
-    <Card
-      className={`group relative overflow-hidden h-44 border border-primary/10 transition-all duration-300 ${skill.borderColor}`}
-      onMouseEnter={() => setHovered(true)}
-      onMouseLeave={() => setHovered(false)}
-    >
-      <div 
-        className={`absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 ${skill.color}`}
-      />
-      
-      <div className="p-6 flex flex-col h-full justify-between relative z-10">
-        <div className="flex items-center justify-between">
-          <div className="flex items-center gap-2">
-            <span className="p-2 rounded-full bg-primary/10 transition-all duration-300">
-              {hovered ? skill.filledIcon : skill.icon}
-            </span>
-            <h3 className="font-medium">{skill.name}</h3>
-          </div>
-          
-          {skill.link && (
-            <a 
-              href={skill.link} 
-              target="_blank" 
-              rel="noopener noreferrer" 
-              className="text-primary/70 hover:text-primary transition-colors"
-              aria-label={`Learn more about ${skill.name}`}
-            >
-              <ExternalLink className="w-4 h-4" />
-            </a>
-          )}
-        </div>
-        
-        <div className="w-full">
-          <div className="text-sm text-muted-foreground mb-2">
-            Proficiency
-          </div>
-          <div className="w-full h-2 bg-primary/10 rounded-full overflow-hidden">
-            <motion.div 
-              className={`h-full ${skill.dotColor}`}
-              initial={{ width: 0 }}
-              animate={{ width: `${skill.level}%` }}
-              transition={{ duration: 1, ease: "easeOut" }}
-            />
-          </div>
-        </div>
+    // Added relative positioning to the parent section for SparklesCore
+    <section id="skills" className="section-padding relative"> 
+      {/* Added SparklesCore for background effect */}
+      <div className="absolute inset-0 w-full h-full">
+        <SparklesCore
+          id="tsparticlesskills" // Unique ID for this instance
+          background="transparent" // Transparent background for the sparkles canvas
+          minSize={0.6} // Minimum size of the particles
+          maxSize={1.4} // Maximum size of the particles
+          particleDensity={100} // Density of the particles
+          className="w-full h-full" // Make sparkles fill the container
+          particleColor="#ffffff" // Color of the particles
+        />
       </div>
-
-      {/* Animated dots background for a subtle effect */}
-      {hovered && (
-        <div className="absolute inset-0 z-0 overflow-hidden opacity-30">
-          {Array.from({ length: 20 }).map((_, i) => (
-            <motion.div
-              key={i}
-              className={`w-1 h-1 rounded-full absolute ${skill.dotColor}`}
-              initial={{ opacity: 0, scale: 0 }}
-              animate={{ 
-                opacity: Math.random() * 0.7 + 0.3, 
-                scale: Math.random() * 0.5 + 0.5 
-              }}
-              transition={{ 
-                duration: Math.random() * 2 + 0.5, 
-                repeat: Infinity, 
-                repeatType: "reverse" 
-              }}
-              style={{
-                top: `${Math.random() * 100}%`,
-                left: `${Math.random() * 100}%`,
-              }}
-            />
-          ))}
-        </div>
-      )}
-    </Card>
-  );
-};
-
-const Skills = () => {
-  return (
-    <section id="skills" className="section-padding relative overflow-hidden">
-      <div className="container mx-auto">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="max-w-4xl mx-auto"
-        >
-          <h2 className="text-3xl font-bold text-center mb-3">Skills</h2>
-          <p className="text-center text-muted-foreground mb-12 max-w-lg mx-auto">
-            A showcase of my technical expertise and proficiency in various technologies
-          </p>
-          
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-            {skills.map((skill) => (
-              <SkillCard key={skill.name} skill={skill} />
-            ))}
-          </div>
-        </motion.div>
+      {/* Added relative positioning for content to be above sparkles */}
+      <div className="py-20 flex flex-col lg:flex-row items-center justify-center bg-transparent dark:bg-transparent w-full gap-4 mx-auto px-8 relative">
+        <Card title="Sheetal is Nisha" icon={<AceternityIcon />}>
+          <CanvasRevealEffect
+            animationSpeed={5.1}
+            containerClassName="bg-emerald-900"
+          />
+        </Card>
+        <Card title="Nisha is Munni" icon={<AceternityIcon />}>
+          <CanvasRevealEffect
+            animationSpeed={3}
+            containerClassName="bg-black"
+            colors={[
+              [236, 72, 153],
+              [232, 121, 249],
+            ]}
+            dotSize={2}
+          />
+          <div className="absolute inset-0 [mask-image:radial-gradient(400px_at_center,white,transparent)] bg-black/50 dark:bg-black/90" />
+        </Card>
+        <Card title="Munni is Aditi" icon={<AceternityIcon />}>
+          <CanvasRevealEffect
+            animationSpeed={3}
+            containerClassName="bg-sky-600"
+            colors={[[125, 211, 252]]}
+          />
+        </Card>
       </div>
     </section>
   );
+}
+
+const Card = ({
+  title,
+  icon,
+  children,
+}: {
+  title: string,
+  icon: React.ReactNode,
+  children?: React.ReactNode,
+}) => {
+  const [hovered, setHovered] = React.useState(false);
+  return (
+    <div
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
+      className="border border-black/[0.2] group/canvas-card flex items-center justify-center dark:border-white/[0.2]  max-w-sm w-full mx-auto p-4 relative h-[30rem] relative"
+    >
+      <Icon className="absolute h-6 w-6 -top-3 -left-3 dark:text-white text-black" />
+      <Icon className="absolute h-6 w-6 -bottom-3 -left-3 dark:text-white text-black" />
+      <Icon className="absolute h-6 w-6 -top-3 -right-3 dark:text-white text-black" />
+      <Icon className="absolute h-6 w-6 -bottom-3 -right-3 dark:text-white text-black" />
+
+      <AnimatePresence>
+        {hovered && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            className="h-full w-full absolute inset-0"
+          >
+            {children}
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      <div className="relative z-20">
+        <div className="text-center group-hover/canvas-card:-translate-y-4 group-hover/canvas-card:opacity-0 transition duration-200 w-full  mx-auto flex items-center justify-center">
+          {icon}
+        </div>
+        <h2 className="dark:text-white text-xl opacity-0 group-hover/canvas-card:opacity-100 relative z-10 text-black mt-4  font-bold group-hover/canvas-card:text-white group-hover/canvas-card:-translate-y-2 transition duration-200">
+          {title}
+        </h2>
+      </div>
+    </div>
+  );
 };
 
-export default Skills;
+const AceternityIcon = () => {
+  return (
+    <svg
+      width="66"
+      height="65"
+      viewBox="0 0 66 65"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      className="h-10 w-10 text-black dark:text-white group-hover/canvas-card:text-white "
+    >
+      <path
+        d="M8 8.05571C8 8.05571 54.9009 18.1782 57.8687 30.062C60.8365 41.9458 9.05432 57.4696 9.05432 57.4696"
+        stroke="currentColor"
+        strokeWidth="15"
+        strokeMiterlimit="3.86874"
+        strokeLinecap="round"
+        style={{ mixBlendMode: "darken" }}
+      />
+    </svg>
+  );
+};
+
+const Icon = ({ className, ...rest }: any) => {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      fill="none"
+      viewBox="0 0 24 24"
+      strokeWidth="1.5"
+      stroke="currentColor"
+      className={className}
+      {...rest}
+    >
+      <path strokeLinecap="round" strokeLinejoin="round" d="M12 6v12m6-6H6" />
+    </svg>
+  );
+};
+
+export default DemoWithCards;
