@@ -43,7 +43,7 @@ const Hero = () => {
         className="w-full h-full absolute inset-0 z-0"
         particleColor="#ffffff" // Ensure this is set to your desired green
       />
-      <motion.div 
+      {/* <motion.div 
         className="absolute top-20 left-10 w-64 h-64 rounded-full bg-primary/5 blur-3xl" 
         // absolute: Positions the element absolutely.
         // top-20: Positions 20 units from the top.
@@ -55,7 +55,7 @@ const Hero = () => {
         // blur-3xl: Applies a large blur effect.
         animate={{ x: [0, 10, 0], y: [0, -10, 0] }} // Animates x and y position.
         transition={{ repeat: Infinity, duration: 8, ease: "easeInOut" }} // Defines animation transition properties.
-      />
+      /> */}
  
       
       {/* Content */}
