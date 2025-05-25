@@ -44,7 +44,7 @@ const About = () => {
                 transition={{ type: "spring", stiffness: 300, damping: 15 }}
               >
                 <img
-                  src="/placeholder.svg"
+                  src="/placeholder.png"
                   alt="Profile"
                   className="w-full h-full object-cover"
                 />

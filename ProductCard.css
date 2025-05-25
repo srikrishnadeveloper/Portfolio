@@ -1,0 +1,72 @@
+/*
+  NOTE: If these changes don't appear, it might be due to:
+  1. Browser Caching: Try a hard refresh (Ctrl+Shift+R or Cmd+Shift+R).
+  2. CSS Specificity: Other more specific CSS rules or !important might be overriding these.
+     Use browser developer tools to inspect the element and check applied styles.
+  3. Build Issues: Ensure your project's build process is correctly picking up CSS changes.
+
+  To change the overall size of the card, modify:
+  - width: sets the width of the card.
+  - padding: space inside the card border.
+  - margin: space outside the card border.
+*/
+.product-card {
+  border: 1px solid #ccc; /* Lighter border */
+  border-radius: 2px;
+  padding: 3px; /* Extremely reduced padding */
+  text-align: center;
+  width: 80px; /* Extremely reduced width */
+  box-shadow: 1px 1px 2px rgba(0,0,0,0.05); /* Minimal shadow */
+  background-color: #fafafa; /* Slightly off-white */
+  margin: 2px; /* Extremely reduced margin */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: hidden; /* Hide overflow for very small sizes */
+}
+
+/*
+  To change the size of the product image, modify:
+  - height: sets the height of the image.
+  - width: (currently 100%) to make it responsive to card width.
+  - margin-bottom: space below the image.
+*/
+.product-image {
+  width: 90%;
+  max-width: 40px; /* Extremely reduced max-width */
+  height: 40px; /* Extremely reduced height */
+  object-fit: contain;
+  border-bottom: 1px solid #eee;
+  margin-bottom: 2px; /* Extremely reduced margin */
+}
+
+/*
+  To change the size of the text elements, modify:
+  - font-size: controls the text size.
+  - margin: controls spacing around the text.
+*/
+.product-name {
+  font-size: 0.6em; /* Extremely reduced font size */
+  font-weight: bold;
+  color: #333;
+  margin: 1px 0; /* Extremely reduced margin */
+  word-break: break-word;
+  line-height: 1.1;
+}
+
+.product-price {
+  font-size: 0.55em; /* Extremely reduced font size */
+  color: #555;
+  margin: 1px 0; /* Extremely reduced margin */
+}
+
+.product-description {
+  font-size: 0.5em; /* Extremely reduced font size */
+  color: #777;
+  margin: 1px 0; /* Extremely reduced margin */
+  height: 15px; /* Extremely reduced fixed height for description */
+  overflow: hidden;
+  text-overflow: ellipsis;
+  line-height: 1.1; 
+  word-break: break-word;
+}
