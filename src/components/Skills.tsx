@@ -170,8 +170,8 @@ const backendSkillsList = [
   },
 ];
 
-// Define the app development and deployment skills data - 6 skills with SVG icons and specific brand colors
-const appDevDeploymentSkillsList = [
+// Define the other skills data - 6 skills with SVG icons and specific brand colors
+const otherSkillsList = [
   {
     title: "React Native",
     icon: "/react.svg",
@@ -209,19 +209,19 @@ const appDevDeploymentSkillsList = [
     dotSize: 8,
   },
   {
-    title: "Heroku",
-    icon: "/heroku.svg",
-    colors: [[121, 89, 182]], // #7957B6
-    hoverColor: "#7957B6",
+    title: "WordPress",
+    icon: "/wordpress.svg",
+    colors: [[33, 117, 155]], // #21759B
+    hoverColor: "#21759B",
     animationSpeed: 3.6,
-    containerClassName: "bg-purple-600",
+    containerClassName: "bg-blue-700",
     dotSize: 8,
   },
   {
-    title: "Railway",
-    icon: "/railway.svg",
-    colors: [[15, 15, 15]], // #0F0F0F
-    hoverColor: "#0F0F0F",
+    title: "Expo",
+    icon: "/expo.svg",
+    colors: [[0, 0, 0]], // #000000
+    hoverColor: "#000000",
     animationSpeed: 4.5,
     containerClassName: "bg-gray-900",
     dotSize: 8,
@@ -423,9 +423,7 @@ function DemoWithCards() {
               </div>            </div>
           </div>
 
-        </div>
-
-        {/* App Development and Deployment Skills Section */}
+        </div>        {/* Other Skills Section */}
         <div className="mt-8 lg:mt-16">
           {/* Mobile title - shown only on mobile */}
           <div className="lg:hidden text-center mb-4">
@@ -433,7 +431,7 @@ function DemoWithCards() {
               className="text-lg font-semibold tracking-wide"
               style={{ color: '#ff6b35' }}
             >
-              APP DEVELOPMENT & DEPLOYMENT 
+              OTHER SKILLS 
             </h2>
           </div>
 
@@ -443,12 +441,11 @@ function DemoWithCards() {
               className="text-xl font-semibold mb-6 tracking-wide"
               style={{ color: '#ff6b35' }}
             >
-              APP DEVELOPMENT & DEPLOYMENT
+              OTHER SKILLS
             </h2>
-            
-            {/* Desktop grid - 2x3 layout for 6 cards */}
+              {/* Desktop grid - 2x3 layout for 6 cards */}
             <div className="grid grid-cols-3 gap-4">
-              {appDevDeploymentSkillsList.map((skill, index) => (
+              {otherSkillsList.map((skill, index) => (
                 <Card key={skill.title} title={skill.title} icon={skill.icon} hoverColor={skill.hoverColor}>
                   <CanvasRevealEffect
                     animationSpeed={skill.animationSpeed}
@@ -466,10 +463,9 @@ function DemoWithCards() {
 
           {/* Mobile layout */}
           <div className="lg:hidden">
-            <div className="flex flex-wrap justify-center gap-y-2">
-              {/* First row - cards 0-1 */}
+            <div className="flex flex-wrap justify-center gap-y-2">              {/* First row - cards 0-1 */}
               <div className="flex flex-row justify-center w-full">
-                {appDevDeploymentSkillsList.slice(0, 2).map((skill, index) => (
+                {otherSkillsList.slice(0, 2).map((skill, index) => (
                   <Card key={skill.title} title={skill.title} icon={skill.icon} hoverColor={skill.hoverColor}>
                     <CanvasRevealEffect
                       animationSpeed={skill.animationSpeed}
@@ -482,10 +478,9 @@ function DemoWithCards() {
                     )}
                   </Card>
                 ))}
-              </div>
-              {/* Second row - cards 2-3 */}
+              </div>              {/* Second row - cards 2-3 */}
               <div className="flex flex-row justify-center w-full">
-                {appDevDeploymentSkillsList.slice(2, 4).map((skill, index) => (
+                {otherSkillsList.slice(2, 4).map((skill, index) => (
                   <Card key={skill.title} title={skill.title} icon={skill.icon} hoverColor={skill.hoverColor}>
                     <CanvasRevealEffect
                       animationSpeed={skill.animationSpeed}
@@ -498,10 +493,9 @@ function DemoWithCards() {
                     )}
                   </Card>
                 ))}
-              </div>
-              {/* Third row - cards 4-5 */}
+              </div>              {/* Third row - cards 4-5 */}
               <div className="flex flex-row justify-center w-full">
-                {appDevDeploymentSkillsList.slice(4, 6).map((skill, index) => (
+                {otherSkillsList.slice(4, 6).map((skill, index) => (
                   <Card key={skill.title} title={skill.title} icon={skill.icon} hoverColor={skill.hoverColor}>
                     <CanvasRevealEffect
                       animationSpeed={skill.animationSpeed}
