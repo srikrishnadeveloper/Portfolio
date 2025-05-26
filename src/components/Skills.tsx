@@ -529,8 +529,8 @@ const Card = ({
               }}
             />
           </div>
-        </div>          {/* Skill name - appears below icon on hover for desktop, always visible on mobile */}
-        <h2 className="text-black dark:text-white text-center text-xs xs:text-xs sm:text-sm opacity-100 sm:opacity-0 group-hover/canvas-card:opacity-100 relative z-10 mt-1 xs:mt-1.5 sm:mt-2 md:mt-3 font-medium transition duration-200">
+        </div>        {/* Skill name - appears below icon on hover for desktop, always visible on mobile */}
+        <h2 className="text-white text-center text-xs xs:text-xs sm:text-sm opacity-100 sm:opacity-0 group-hover/canvas-card:opacity-100 relative z-10 mt-1 xs:mt-1.5 sm:mt-2 md:mt-3 font-medium transition duration-200">
           {title}
         </h2>
       </div>
@@ -577,3 +577,4 @@ const Icon = ({ className, ...rest }: any) => {
 };
 
 export default DemoWithCards;
+ 74
