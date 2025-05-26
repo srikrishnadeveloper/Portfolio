@@ -65,7 +65,7 @@ const Navbar = () => {
             className="text-lg font-bold"
           >
             <span className="bg-clip-text text-transparent bg-gradient-to-r from-primary to-primary/70">
-              Srikrishna
+              SRIKRISHNA
             </span>
           </motion.div>
           

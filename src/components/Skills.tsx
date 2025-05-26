@@ -136,7 +136,7 @@ const backendSkillsList = [
   {
     title: "Firebase",
     icon: "/firebase.svg",
-    colors: [[221, 44, 0]], //rgb(221, 44, 0)
+    colors: [[255, 202, 40]], // #FFCA28
     hoverColor: "#FFCA28",
     animationSpeed: 3.2,
     containerClassName: "bg-yellow-500",
@@ -194,7 +194,7 @@ const otherSkillsList = [
     title: "Expo",
     icon: "/expo.svg",
     colors: [[0, 0, 0]], // #000000
-    hoverColor: "#000000",
+    hoverColor: "#ffffff",
     animationSpeed: 4.5,
     containerClassName: "bg-gray-900",
     dotSize: 8,
@@ -247,14 +247,13 @@ function DemoWithCards() {
       {/* Skills Section - Frontend and Backend Side by Side */}
       <div className="py-20 flex flex-col items-center justify-center bg-transparent dark:bg-transparent w-full mx-auto relative">        {/* Section Headers - Desktop only */}
         <div className="hidden lg:flex lg:flex-row justify-between w-full max-w-7xl mb-12 gap-0">
-          <h2 className="text-3xl font-bold text-center flex-1" style={{ color: '#5de3ff' }}>FRONTEND </h2>
-          <h2 className="text-3xl font-bold text-center flex-1" style={{ color: '#9785ff' }}>BACKEND</h2>
-        </div>        {/* Skills Container - Responsive Layout */}
+          <h2 className="text-3xl font-bold text-center flex-1 text-black dark:text-white">Frontend Skills </h2>
+          <h2 className="text-3xl font-bold text-center flex-1 text-black dark:text-white">Backend Skills</h2>
+        </div>{/* Skills Container - Responsive Layout */}
         <div className="flex flex-col lg:flex-row justify-center gap-12 lg:gap-24 w-full max-w-7xl">{/* Frontend Skills Section */}
-          <div className="flex flex-col items-center w-full lg:w-1/2">
-            {/* Frontend Title - Mobile/Tablet */}
-            <h2 className="text-2xl md:text-3xl lg:hidden font-bold text-center mb-6" style={{ color: '#5de3ff' }}>FRONTEND Skills</h2>
-            
+          <div className="flex flex-col items-center w-full lg:w-1/2">            {/* Frontend Title - Mobile/Tablet */}
+            <h2 className="text-2xl md:text-3xl lg:hidden font-bold text-center mb-6 text-black dark:text-white">Frontend Skills</h2>
+
             {/* Frontend Skills - Responsive grid layout */}{/* Mobile layout - 2 cards per row */}
             <div className="flex flex-wrap sm:hidden w-full max-w-xs gap-y-2">
               {frontendSkillsList.slice(0, 8).map((skill, index) => (
@@ -338,9 +337,8 @@ function DemoWithCards() {
               </div>
             </div>
           </div>          {/* Backend Skills Section */}
-          <div className="flex flex-col items-center w-full lg:w-1/2">
-            {/* Backend Title - Mobile/Tablet */}
-            <h2 className="text-2xl md:text-3xl lg:hidden font-bold text-center mb-6" style={{ color: '#9785ff' }}>Backend Skills</h2>
+          <div className="flex flex-col items-center w-full lg:w-1/2">            {/* Backend Title - Mobile/Tablet */}
+            <h2 className="text-2xl md:text-3xl lg:hidden font-bold text-center mb-6 text-black dark:text-white">Backend Skills</h2>
             
             {/* Backend Skills - Responsive grid layout */}{/* Mobile layout - 2 cards per row */}
             <div className="flex flex-wrap sm:hidden w-full max-w-xs gap-y-2">
@@ -424,24 +422,21 @@ function DemoWithCards() {
           </div>
 
         </div>        {/* Other Skills Section */}
-        <div className="mt-8 lg:mt-16">
-          {/* Mobile title - shown only on mobile */}
+        <div className="mt-8 lg:mt-16">          {/* Mobile title - shown only on mobile */}
           <div className="lg:hidden text-center mb-4">
             <h2 
-              className="text-lg font-semibold tracking-wide"
-              style={{ color: '#ff6b35' }}
+              className="text-2xl md:text-3xl font-bold tracking-wide text-black dark:text-white"
             >
-              OTHER SKILLS 
+              Other Skills
             </h2>
           </div>
 
           {/* Desktop title and grid container */}
           <div className="hidden lg:flex lg:flex-col lg:items-center">
             <h2 
-              className="text-xl font-semibold mb-6 tracking-wide"
-              style={{ color: '#ff6b35' }}
+              className="text-3xl font-bold mb-6 tracking-wide text-black dark:text-white"
             >
-              OTHER SKILLS
+              Other Skills
             </h2>
               {/* Desktop grid - 2x3 layout for 6 cards */}
             <div className="grid grid-cols-3 gap-4">
@@ -535,7 +530,7 @@ const Card = ({
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
       // Responsive size components with hover scale effect and high z-index
-      className="group/canvas-card flex items-center justify-center relative border border-[#42434d] bg-[#131316] transition-all duration-200 hover:scale-105 hover:z-50 w-32 h-24 sm:w-40 sm:h-28 md:w-48 md:h-32 lg:w-52 lg:h-36 xl:w-56 xl:h-40"
+      className="group/canvas-card flex items-center justify-center relative border border-[#42434d] bg-white dark:bg-[#131316] transition-all duration-200 hover:scale-105 hover:z-50 w-32 h-24 sm:w-40 sm:h-28 md:w-48 md:h-32 lg:w-52 lg:h-36 xl:w-56 xl:h-40"
       style={{ borderWidth: '0.5px' }}
     >
       <AnimatePresence>
@@ -550,16 +545,16 @@ const Card = ({
         )}
       </AnimatePresence>      <div className="relative z-20 flex flex-col items-center justify-center h-full w-full">
         {/* Icon container - moves up slightly on hover but starts slightly lower */}
-        {/* Icon should be set to the translate-y-3.5 */}
-        <div className="text-center translate-y-1 sm:translate-y-3.5 group-hover/canvas-card:-translate-y-1 transition duration-200 flex items-center justify-center">
-          <div className="h-10 w-10 relative">
-            {/* Default white icon */}
-            <img 
-              src={icon} 
-              alt={title} 
-              className="h-10 w-10 transition-all duration-200 absolute inset-0"
+        {/* Icon should be set to the translate-y-3.5 */}        <div className="text-center translate-y-1 sm:translate-y-3.5 group-hover/canvas-card:-translate-y-1 transition duration-200 flex items-center justify-center">
+          <div className="h-10 w-10 relative">            
+            {/* Default icon - black in light mode, white in dark mode */}
+            <div 
+              className="h-10 w-10 transition-all duration-200 absolute inset-0 bg-black dark:bg-white"
               style={{ 
-                filter: 'brightness(0) invert(1)', // White by default
+                mask: `url(${icon}) no-repeat center`,
+                maskSize: 'contain',
+                WebkitMask: `url(${icon}) no-repeat center`,
+                WebkitMaskSize: 'contain',
                 opacity: hovered ? 0 : 1 
               }}
             />
