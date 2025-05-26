@@ -136,7 +136,7 @@ const backendSkillsList = [
   {
     title: "Firebase",
     icon: "/firebase.svg",
-    colors: [[255, 202, 40]], // #FFCA28
+    colors: [[221, 44, 0]], //rgb(221, 44, 0)
     hoverColor: "#FFCA28",
     animationSpeed: 3.2,
     containerClassName: "bg-yellow-500",
@@ -191,6 +191,15 @@ const otherSkillsList = [
     dotSize: 8,
   },
   {
+    title: "Expo",
+    icon: "/expo.svg",
+    colors: [[0, 0, 0]], // #000000
+    hoverColor: "#000000",
+    animationSpeed: 4.5,
+    containerClassName: "bg-gray-900",
+    dotSize: 8,
+  },
+  {
     title: "Vercel",
     icon: "/vercel.svg",
     colors: [[255, 255, 255]], // #ffffff
@@ -215,15 +224,6 @@ const otherSkillsList = [
     hoverColor: "#21759B",
     animationSpeed: 3.6,
     containerClassName: "bg-blue-700",
-    dotSize: 8,
-  },
-  {
-    title: "Expo",
-    icon: "/expo.svg",
-    colors: [[0, 0, 0]], // #000000
-    hoverColor: "#000000",
-    animationSpeed: 4.5,
-    containerClassName: "bg-gray-900",
     dotSize: 8,
   },
 ];
