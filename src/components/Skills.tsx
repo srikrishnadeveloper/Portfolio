@@ -530,7 +530,7 @@ const Card = ({
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
       // Responsive size components with hover scale effect and high z-index
-      className="group/canvas-card flex items-center justify-center relative border border-[#42434d] bg-white dark:bg-[#131316] transition-all duration-200 hover:scale-105 hover:z-50 w-32 h-24 sm:w-40 sm:h-28 md:w-48 md:h-32 lg:w-52 lg:h-36 xl:w-56 xl:h-40"
+      className="group/canvas-card flex items-center justify-center relative border border-[#42434d] bg-white dark:bg-[#131316] transition-all duration-200 hover:scale-105 hover:z-50 w-32 h-24 sm:w-40 sm:h-28 md:w-48 md:h-32 lg:w-52 lg:h-36 xl:w-56 xl:h-40 rounded-lg"
       style={{ borderWidth: '0.5px' }}
     >
       <AnimatePresence>
