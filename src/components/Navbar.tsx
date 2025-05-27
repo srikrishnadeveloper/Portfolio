@@ -8,12 +8,19 @@ const Navbar = () => {
   const { theme, setTheme } = useTheme();
   const [activeSection, setActiveSection] = useState("home");
   const [isScrolled, setIsScrolled] = useState(false);
-
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
 
-      const sections = ["home", "about", "projects", "contact"];
+      // Check if user has reached the bottom of the page
+      const isAtBottom = window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 10;
+      
+      if (isAtBottom) {
+        setActiveSection("contact");
+        return;
+      }
+
+      const sections = ["home", "about", "skills", "projects", "certifications", "contact"];
       for (const section of sections) {
         const element = document.getElementById(section);
         if (element) {
@@ -67,11 +74,9 @@ const Navbar = () => {
             <span className="bg-clip-text text-transparent bg-gradient-to-r from-primary to-primary/70">
               SRIKRISHNA
             </span>
-          </motion.div>
-          
-          {/* Navigation Links */}
+          </motion.div>          {/* Navigation Links */}
           <div className="hidden md:flex items-center space-x-8">
-            {["About", "Projects", "Contact"].map((item) => (
+            {["About", "Skills", "Projects", "Certifications", "Contact"].map((item) => (
               <button
                 key={item}
                 onClick={() => scrollToSection(item.toLowerCase())}
