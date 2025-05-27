@@ -185,14 +185,13 @@ const otherSkillsList = [
     animationSpeed: 4.0,
     containerClassName: "bg-blue-600",
     dotSize: 8,
-  },
-  {
+  },  {
     title: "Expo",
     icon: "/expo.svg",
-    colors: [[0, 0, 0]], // #000000
+    colors: [[255, 255, 255]], // #ffffff
     hoverColor: "#ffffff",
     animationSpeed: 4.5,
-    containerClassName: "bg-gray-900",
+    containerClassName: "bg-gray-800",
     dotSize: 8,
   },
   {
@@ -411,12 +410,11 @@ function DemoWithCards() {
             {otherSkillsList.map((skill, index) => (
               <Card key={skill.title} title={skill.title} icon={skill.icon} hoverColor={skill.hoverColor}>
                 <CanvasRevealEffect
-                  animationSpeed={skill.animationSpeed}
-                  containerClassName={skill.containerClassName}
+                  animationSpeed={skill.animationSpeed}                  containerClassName={skill.containerClassName}
                   colors={skill.colors}
                   dotSize={skill.dotSize}
                 />
-                {skill.title === "Vercel" && (
+                {(skill.title === "Vercel" || skill.title === "Expo") && (
                   <div className="absolute inset-0 [mask-image:radial-gradient(400px_at_center,white,transparent)] bg-black/50 dark:bg-black/90" />
                 )}
               </Card>
@@ -427,18 +425,17 @@ function DemoWithCards() {
               <div key={skill.title} className="flex justify-center">
                 <Card title={skill.title} icon={skill.icon} hoverColor={skill.hoverColor}>
                   <CanvasRevealEffect
-                    animationSpeed={skill.animationSpeed}
-                    containerClassName={skill.containerClassName}
+                    animationSpeed={skill.animationSpeed}                    containerClassName={skill.containerClassName}
                     colors={skill.colors}
                     dotSize={skill.dotSize}
                   />
-                  {skill.title === "Vercel" && (
+                  {(skill.title === "Vercel" || skill.title === "Expo") && (
                     <div className="absolute inset-0 [mask-image:radial-gradient(400px_at_center,white,transparent)] bg-black/50 dark:bg-black/90" />
                   )}
                 </Card>
               </div>
             ))}
-          </div>          {/* Desktop layout - 3 cards per row with centered title - show for 1200px+ */}
+          </div>{/* Desktop layout - 3 cards per row with centered title - show for 1200px+ */}
           <div className="hidden xl:flex xl:flex-col xl:items-center">
             <h2 className="text-3xl font-bold mb-6 tracking-wide text-black dark:text-white">
               Other Skills
@@ -448,11 +445,10 @@ function DemoWithCards() {
                 <Card key={skill.title} title={skill.title} icon={skill.icon} hoverColor={skill.hoverColor}>
                   <CanvasRevealEffect
                     animationSpeed={skill.animationSpeed}
-                    containerClassName={skill.containerClassName}
-                    colors={skill.colors}
+                    containerClassName={skill.containerClassName}                    colors={skill.colors}
                     dotSize={skill.dotSize}
                   />
-                  {skill.title === "Vercel" && (
+                  {(skill.title === "Vercel" || skill.title === "Expo") && (
                     <div className="absolute inset-0 [mask-image:radial-gradient(400px_at_center,white,transparent)] bg-black/50 dark:bg-black/90" />
                   )}
                 </Card>              ))}
@@ -522,7 +518,7 @@ const Card = ({
             />
           </div>
         </div>        {/* Skill name - appears below icon on hover for desktop, always visible on mobile */}
-        <h2 className="text-black dark:text-white text-center text-xs xs:text-xs sm:text-sm opacity-100 sm:opacity-0 group-hover/canvas-card:opacity-100 relative z-10 mt-1 xs:mt-1.5 sm:mt-2 md:mt-3 font-medium transition duration-200">
+        <h2 className={`text-center text-xs xs:text-xs sm:text-sm opacity-100 sm:opacity-0 group-hover/canvas-card:opacity-100 relative z-10 mt-1 xs:mt-1.5 sm:mt-2 md:mt-3 font-medium transition duration-200 ${hovered ? 'text-white' : 'text-black dark:text-white'}`}>
           {title}
         </h2>
       </div>
