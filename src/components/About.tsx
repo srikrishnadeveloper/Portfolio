@@ -2,10 +2,9 @@ import { motion } from "framer-motion";
 import { Download, Mail, Github, Linkedin } from "lucide-react";
 import { SparklesCore } from "./ui/sparkles"; // Added import
 
-const About = () => {
-  const handleResumeDownload = () => {
+const About = () => {  const handleResumeDownload = () => {
     // Open the resume PDF in a new tab
-    window.open('/resume.pdf', '_blank');
+    window.open('/Srikrishna Resume.pdf', '_blank');
   };
 
   return (
