@@ -95,7 +95,7 @@ const Hero = () => {
               animate={{ y: 0, opacity: 1 }} // Target animation state.
               transition={{ delay: 0.5, duration: 0.7 }} // Animation delay and duration.
             >
-              Creative Developer crafting beautiful digital experiences with modern web technologies
+              Full-stack Developer turning bold ideas into seamless digital products using modern web and AI technologies.
             </motion.p>
           </motion.div>
 

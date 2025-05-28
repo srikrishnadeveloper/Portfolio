@@ -6,84 +6,83 @@ import { CanvasRevealEffect } from "@/components/ui/canvas-reveal-effect";
 import { SparklesCore } from "./ui/sparkles"; // Added import for SparklesCore
 
 // Define the frontend skills data - 9 skills with SVG icons and specific brand colors
-const frontendSkillsList = [
-  {
+const frontendSkillsList = [  {
     title: "HTML5",
     icon: "/html5.svg",
     colors: [[227, 79, 38]], // #E34F26
     hoverColor: "#E34F26",
-    animationSpeed: 4.5,
+    animationSpeed: 3.0,
     containerClassName: "bg-orange-900",
-    dotSize: 8,
+    dotSize: 6,
   },
   {
     title: "CSS",
     icon: "/css.svg",
     colors: [[102, 51, 153]], // #663399
     hoverColor: "#663399",
-    animationSpeed: 3,
+    animationSpeed: 2.5,
     containerClassName: "bg-purple-900",
-    dotSize: 8,
+    dotSize: 6,
   },  {
     title: "Tailwind CSS",
     icon: "/tailwindcss.svg",
     colors: [[6, 182, 212]], // #06B6D4
     hoverColor: "#06B6D4",
-    animationSpeed: 4.2,
+    animationSpeed: 3.2,
     containerClassName: "bg-cyan-700",
-    dotSize: 8,
+    dotSize: 6,
   },
   {
     title: "Bootstrap",
     icon: "/bootstrap.svg",
     colors: [[121, 82, 179]], // #7952B3
     hoverColor: "#7952B3",
-    animationSpeed: 4.0,
+    animationSpeed: 3.0,
     containerClassName: "bg-purple-700",
-    dotSize: 8,
+    dotSize: 6,
   },
   {
     title: "JavaScript",
     icon: "/javascript.svg",
     colors: [[247, 223, 30]], // #F7DF1E
     hoverColor: "#F7DF1E",
-    animationSpeed: 5.1,
+    animationSpeed: 3.5,
     containerClassName: "bg-yellow-600",
-    dotSize: 8,
+    dotSize: 6,
   },
   {
     title: "TypeScript",
     icon: "/typescript.svg",
     colors: [[49, 120, 198]], // #3178C6
     hoverColor: "#3178C6",
-    animationSpeed: 3.8,
+    animationSpeed: 2.8,
     containerClassName: "bg-blue-700",
-    dotSize: 8,
+    dotSize: 6,
   },
   {
     title: "React",
     icon: "/react.svg",
     colors: [[97, 218, 251]], // #61DAFB
     hoverColor: "#61DAFB",
-    animationSpeed: 3.5,
+    animationSpeed: 2.5,
     containerClassName: "bg-sky-600",
-    dotSize: 8,
+    dotSize: 6,
   },  {
     title: "Next.js",
     icon: "/nextdotjs.svg",
     colors: [[255, 255, 255]], // #ffffff
     hoverColor: "#ffffff",
-    animationSpeed: 3,
+    animationSpeed: 2.0,
     containerClassName: "bg-gray-800",
-    dotSize: 8,
+    dotSize: 6,
   },{
     title: "Vite",
     icon: "/vite.svg",
     colors: [[100, 108, 255]], // #646CFF
     hoverColor: "#646CFF",
-    animationSpeed: 5,
+    animationSpeed: 3.5,
     containerClassName: "bg-indigo-700",
-    dotSize: 8,
+    dotSize: 6,
   },
 ];
 
@@ -93,76 +92,76 @@ const backendSkillsList = [  {
     icon: "/nodedotjs.svg",
     colors: [[95, 160, 78]], // #5FA04E
     hoverColor: "#5FA04E",
-    animationSpeed: 4.5,
+    animationSpeed: 3.0,
     containerClassName: "bg-green-800",
-    dotSize: 8,
+    dotSize: 6,
   },{
     title: "Express.js",
     icon: "/express.svg",
     colors: [[255, 255, 255]], // #ffffff
     hoverColor: "#ffffff",
-    animationSpeed: 4,
+    animationSpeed: 2.8,
     containerClassName: "bg-gray-800",
-    dotSize: 8,
+    dotSize: 6,
   },
   {
     title: "MongoDB",
     icon: "/mongodb.svg",
     colors: [[71, 162, 72]], // #47A248
     hoverColor: "#47A248",
-    animationSpeed: 5.1,
+    animationSpeed: 3.5,
     containerClassName: "bg-green-700",
-    dotSize: 8,
+    dotSize: 6,
   },  {
     title: "PostgreSQL",
     icon: "/postgresql.svg",
     colors: [[65, 105, 225]], // #4169E1
     hoverColor: "#4169E1",
-    animationSpeed: 3.8,
+    animationSpeed: 2.8,
     containerClassName: "bg-blue-900",
-    dotSize: 8,
+    dotSize: 6,
   },
   {
     title: "Supabase",
     icon: "/supabase.svg",
     colors: [[62, 207, 142]], // #3ECF8E
     hoverColor: "#3ECF8E",
-    animationSpeed: 3.5,
+    animationSpeed: 2.5,
     containerClassName: "bg-emerald-700",
-    dotSize: 8,
+    dotSize: 6,
   },  {
     title: "Firebase",
     icon: "/firebase.svg",
     colors: [[221, 44, 0]], // #DD2C00
     hoverColor: "#DD2C00",
-    animationSpeed: 3.2,
+    animationSpeed: 2.2,
     containerClassName: "bg-red-600",
-    dotSize: 8,
+    dotSize: 6,
   },  {
     title: "Docker",
     icon: "/docker.svg",
     colors: [[36, 150, 237]], // #2496ED
     hoverColor: "#2496ED",
-    animationSpeed: 3,
+    animationSpeed: 2.0,
     containerClassName: "bg-blue-600",
-    dotSize: 8,
+    dotSize: 6,
   },
   {
     title: "GitHub",
     icon: "/github.svg",
     colors: [[255, 255, 255]], // #ffffff
     hoverColor: "#ffffff",
-    animationSpeed: 4.8,
+    animationSpeed: 3.2,
     containerClassName: "bg-gray-800",
-    dotSize: 8,
+    dotSize: 6,
   },  {
     title: "AWS",
     icon: "/aws.svg",
     colors: [[255, 159, 51]], // #FF9F33
     hoverColor: "#FF9F33",
-    animationSpeed: 4,
+    animationSpeed: 2.8,
     containerClassName: "bg-orange-600",
-    dotSize: 8,
+    dotSize: 6,
   },
 ];
 
@@ -173,53 +172,53 @@ const otherSkillsList = [
     icon: "/react.svg",
     colors: [[97, 218, 251]], // #61DAFB
     hoverColor: "#61DAFB",
-    animationSpeed: 3.5,
+    animationSpeed: 2.5,
     containerClassName: "bg-sky-600",
-    dotSize: 8,
+    dotSize: 6,
   },
   {
     title: "Flutter",
     icon: "/flutter.svg",
     colors: [[2, 125, 251]], // #027DFB
     hoverColor: "#027DFB",
-    animationSpeed: 4.0,
+    animationSpeed: 2.8,
     containerClassName: "bg-blue-600",
-    dotSize: 8,
+    dotSize: 6,
   },  {
     title: "Expo",
     icon: "/expo.svg",
     colors: [[255, 255, 255]], // #ffffff
     hoverColor: "#ffffff",
-    animationSpeed: 4.5,
+    animationSpeed: 3.0,
     containerClassName: "bg-gray-800",
-    dotSize: 8,
+    dotSize: 6,
   },
   {
     title: "Vercel",
     icon: "/vercel.svg",
     colors: [[255, 255, 255]], // #ffffff
     hoverColor: "#ffffff",
-    animationSpeed: 3.8,
+    animationSpeed: 2.8,
     containerClassName: "bg-gray-800",
-    dotSize: 8,
+    dotSize: 6,
   },
   {
     title: "Netlify",
     icon: "/netlify.svg",
     colors: [[0, 173, 181]], // #00ADB5
     hoverColor: "#00ADB5",
-    animationSpeed: 4.2,
+    animationSpeed: 3.2,
     containerClassName: "bg-teal-600",
-    dotSize: 8,
+    dotSize: 6,
   },
   {
     title: "WordPress",
     icon: "/wordpress.svg",
     colors: [[33, 117, 155]], // #21759B
     hoverColor: "#21759B",
-    animationSpeed: 3.6,
+    animationSpeed: 2.6,
     containerClassName: "bg-blue-700",
-    dotSize: 8,
+    dotSize: 6,
   },
 ];
 
@@ -473,52 +472,60 @@ const Card = ({
 }) => {
   const [hovered, setHovered] = React.useState(false);
   return (    <div      onMouseEnter={() => setHovered(true)}      onMouseLeave={() => setHovered(false)}      // Responsive size components with hover scale effect and high z-index
-      className="group/canvas-card flex items-center justify-center relative border border-[#42434d] bg-white dark:bg-[#131316] transition-all duration-200 hover:z-50 w-28 h-24 min-[305px]:w-36 min-[305px]:h-28 xs:w-40 xs:h-30 sm:w-32 sm:h-24 md:w-36 md:h-28 lg:w-40 lg:h-32 xl:w-44 xl:h-34 2xl:w-48 2xl:h-36 rounded-sm sm:rounded-lg overflow-hidden"
+      className="group/canvas-card flex items-center justify-center relative border border-[#42434d] bg-white dark:bg-[#131316] transition-transform duration-300 ease-out hover:z-50 w-28 h-24 min-[305px]:w-36 min-[305px]:h-28 xs:w-40 xs:h-30 sm:w-32 sm:h-24 md:w-36 md:h-28 lg:w-40 lg:h-32 xl:w-44 xl:h-34 2xl:w-48 2xl:h-36 rounded-sm sm:rounded-lg overflow-hidden"
       style={{ 
         borderWidth: '0.5px',
-        transform: hovered ? 'scale(1.05)' : 'scale(1)',
-        transition: 'all 0.2s ease-in-out'
+        transform: hovered ? 'scale(1.02)' : 'scale(1)',
+        willChange: 'transform, opacity',
+        backfaceVisibility: 'hidden',
+        perspective: '1000px'
       }}
-    >
-      <AnimatePresence>
+    >      <AnimatePresence mode="wait">
         {hovered && (
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.2, ease: "easeOut" }}
             className="h-full w-full absolute inset-0"
+            style={{ 
+              willChange: 'opacity',
+              backfaceVisibility: 'hidden'
+            }}
           >
             {children}
           </motion.div>
         )}
-      </AnimatePresence>      <div className="relative z-20 flex flex-col items-center justify-center h-full w-full">
+      </AnimatePresence><div className="relative z-20 flex flex-col items-center justify-center h-full w-full">
         {/* Icon container - moves up slightly on hover but starts slightly lower */}
-        {/* Icon should be set to the translate-y-3.5 */}        <div className="text-center translate-y-0.5 sm:translate-y-1 md:translate-y-3.5 group-hover/canvas-card:-translate-y-1 transition duration-200 flex items-center justify-center">
+        {/* Icon should be set to the translate-y-3.5 */}        <div className="text-center translate-y-0.5 sm:translate-y-1 md:translate-y-3.5 group-hover/canvas-card:-translate-y-1 transition-transform duration-200 flex items-center justify-center">
           <div className="h-6 w-6 min-[305px]:h-8 min-[305px]:w-8 sm:h-9 sm:w-9 md:h-10 md:w-10 relative">            
             {/* Default icon - black in light mode, white in dark mode */}
             <div 
-              className="h-6 w-6 min-[305px]:h-8 min-[305px]:w-8 sm:h-9 sm:w-9 md:h-10 md:w-10 transition-all duration-200 absolute inset-0 bg-black dark:bg-white"
+              className="h-6 w-6 min-[305px]:h-8 min-[305px]:w-8 sm:h-9 sm:w-9 md:h-10 md:w-10 transition-opacity duration-200 absolute inset-0 bg-black dark:bg-white"
               style={{ 
                 mask: `url(${icon}) no-repeat center`,
                 maskSize: 'contain',
                 WebkitMask: `url(${icon}) no-repeat center`,
                 WebkitMaskSize: 'contain',
-                opacity: hovered ? 0 : 1 
+                opacity: hovered ? 0 : 1,
+                willChange: 'opacity'
               }}
             />            {/* Colored icon on hover */}
             <div 
-              className="h-6 w-6 min-[305px]:h-8 min-[305px]:w-8 sm:h-9 sm:w-9 md:h-10 md:w-10 transition-all duration-200 absolute inset-0"
+              className="h-6 w-6 min-[305px]:h-8 min-[305px]:w-8 sm:h-9 sm:w-9 md:h-10 md:w-10 transition-opacity duration-200 absolute inset-0"
               style={{ 
                 backgroundColor: hoverColor,
                 mask: `url(${icon}) no-repeat center`,
                 maskSize: 'contain',
                 WebkitMask: `url(${icon}) no-repeat center`,
                 WebkitMaskSize: 'contain',
-                opacity: hovered ? 1 : 0 
+                opacity: hovered ? 1 : 0,
+                willChange: 'opacity'
               }}
             />
           </div>
-        </div>        {/* Skill name - appears below icon on hover for desktop, always visible on mobile */}
-        <h2 className={`text-center text-xs xs:text-xs sm:text-sm opacity-100 sm:opacity-0 group-hover/canvas-card:opacity-100 relative z-10 mt-1 xs:mt-1.5 sm:mt-2 md:mt-3 font-medium transition duration-200 ${hovered ? 'text-white' : 'text-black dark:text-white'}`}>
+        </div>{/* Skill name - appears below icon on hover for desktop, always visible on mobile */}        <h2 className={`text-center text-xs xs:text-xs sm:text-sm opacity-100 sm:opacity-0 group-hover/canvas-card:opacity-100 relative z-10 mt-1 xs:mt-1.5 sm:mt-2 md:mt-3 font-medium transition-opacity duration-200 ${hovered ? 'text-white' : 'text-black dark:text-white'}`}>
           {title}
         </h2>
       </div>
