@@ -43,15 +43,10 @@ const Navbar = () => {
       element.scrollIntoView({ behavior: "smooth" });
     }
   };
-
   const handleResumeDownload = () => {
-    // Replace with actual resume file when available
-    const link = document.createElement('a');
-    link.href = '/resume.pdf';
-    link.download = 'Srikrishna-Resume.pdf';
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
+    // Open resume in new tab - works on all hosting platforms
+    const resumeUrl = '/Srikrishna%20Resume.pdf';
+    window.open(resumeUrl, '_blank', 'noopener,noreferrer');
   };
 
   return (    <motion.nav

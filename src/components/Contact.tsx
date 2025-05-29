@@ -119,9 +119,8 @@ const Contact = () => {
               <p className="text-muted-foreground">
                 I'm always open to new opportunities and collaborations. Feel free to reach out!
               </p>
-              <div className="flex gap-4">
-                <a
-                  href="https://github.com"
+              <div className="flex gap-4">                <a
+                  href="https://github.com/srikrishnadeveloper"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="p-2 rounded-full hover:bg-primary/10 transition-colors"
@@ -129,7 +128,7 @@ const Contact = () => {
                   <Github className="w-6 h-6" />
                 </a>
                 <a
-                  href="https://linkedin.com"
+                  href="https://www.linkedin.com/in/sri-krishna-web-developer"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="p-2 rounded-full hover:bg-primary/10 transition-colors"

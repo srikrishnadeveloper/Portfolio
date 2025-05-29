@@ -3,24 +3,9 @@ import { Download, Mail, Github, Linkedin } from "lucide-react";
 import { SparklesCore } from "./ui/sparkles"; // Added import
 
 const About = () => {  const handleResumeDownload = () => {
-    // Try multiple approaches to handle the resume download
-    try {
-      console.log('Attempting to download resume...');
-      // Method 1: Direct download with proper encoding
-      const link = document.createElement('a');
-      link.href = '/Srikrishna%20Resume.pdf'; // URL encoded space
-      link.download = 'Srikrishna_Resume.pdf'; // Filename for download
-      link.target = '_blank';
-      link.rel = 'noopener noreferrer';
-      document.body.appendChild(link);
-      link.click();
-      document.body.removeChild(link);
-      console.log('Resume download initiated successfully');
-    } catch (error) {
-      // Fallback method: Open in new tab
-      console.log('Download failed, opening in new tab:', error);
-      window.open('/Srikrishna%20Resume.pdf', '_blank');
-    }
+    // Open resume in new tab - works on all hosting platforms
+    const resumeUrl = '/Srikrishna%20Resume.pdf';
+    window.open(resumeUrl, '_blank', 'noopener,noreferrer');
   };
 
   return (
@@ -89,8 +74,7 @@ I specialize in building responsive, scalable web and mobile apps using React, N
                   whileTap={{ scale: 0.95 }}
                   onClick={handleResumeDownload}
                   className="inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-full bg-primary text-primary-foreground hover:bg-primary/90 transition-colors"
-                >
-                  <Download className="w-4 h-4" />
+                >                  <Download className="w-4 h-4" />
                   Open Resume
                 </motion.button>
 

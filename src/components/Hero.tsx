@@ -4,15 +4,10 @@ import { CommitsGrid } from "@/components/ui/commits-grid"; // Updated import pa
 import { SparklesCore } from "@/components/ui/sparkles"; // Updated import path
 import React from "react";  
 
-const Hero = () => {
-  const handleResumeDownload = () => {
-    // Replace with actual resume file when available
-    const link = document.createElement('a');
-    link.href = '/resume.pdf';
-    link.download = 'Srikrishna-Resume.pdf';
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
+const Hero = () => {  const handleResumeDownload = () => {
+    // Open resume in new tab - works on all hosting platforms
+    const resumeUrl = '/Srikrishna%20Resume.pdf';
+    window.open(resumeUrl, '_blank', 'noopener,noreferrer');
   };
 
   return (
