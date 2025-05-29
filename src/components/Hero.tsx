@@ -1,13 +1,13 @@
 import { motion } from "framer-motion";
-import { ArrowRight, Download } from "lucide-react";
+import { ArrowRight, ExternalLink } from "lucide-react";
 import { CommitsGrid } from "@/components/ui/commits-grid"; // Updated import path
 import { SparklesCore } from "@/components/ui/sparkles"; // Updated import path
 import React from "react";  
 
-const Hero = () => {  const handleResumeDownload = () => {
-    // Open resume in new tab - works on all hosting platforms
-    const resumeUrl = '/Srikrishna%20Resume.pdf';
-    window.open(resumeUrl, '_blank', 'noopener,noreferrer');
+const Hero = () => {
+  const handleResumeOpen = () => {
+    // Open resume in new tab - works reliably across all platforms and hosting services
+    window.open('/Srikrishna%20Resume.pdf', '_blank', 'noopener,noreferrer');
   };
 
   return (
@@ -133,11 +133,10 @@ const Hero = () => {  const handleResumeDownload = () => {
                 transition-transform: Applies transition effect to transform property.
               */}
             </motion.a>
-            
-            <motion.button
+              <motion.button
               whileHover={{ scale: 1.05 }} // Scales up on hover.
               whileTap={{ scale: 0.95 }} // Scales down on tap/click.
-              onClick={handleResumeDownload}
+              onClick={handleResumeOpen}
               className="inline-flex items-center justify-center gap-2 px-6 py-3 text-sm font-medium bg-transparent border border-primary text-primary rounded-full hover:bg-primary/10 transition-all"
               // inline-flex: Displays as an inline-level flex container.
               // items-center: Aligns flex items vertically to the center.
@@ -155,12 +154,12 @@ const Hero = () => {  const handleResumeDownload = () => {
               // hover:bg-primary/10: Changes background color to primary with 10% opacity on hover.
               // transition-all: Applies transition effect to all animatable properties.
             >
-              <Download className="w-4 h-4" />
+              <ExternalLink className="w-4 h-4" />
               {/*
                 w-4: Sets width to 4 units.
                 h-4: Sets height to 4 units.
               */}
-              Download Resume
+              Open Resume
             </motion.button>
           </motion.div>
         </motion.div>

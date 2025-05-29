@@ -1,11 +1,23 @@
 import { motion } from "framer-motion";
-import { Download, Mail, Github, Linkedin } from "lucide-react";
+import { ExternalLink, Mail, Github, Linkedin } from "lucide-react";
 import { SparklesCore } from "./ui/sparkles"; // Added import
 
-const About = () => {  const handleResumeDownload = () => {
-    // Open resume in new tab - works on all hosting platforms
-    const resumeUrl = '/Srikrishna%20Resume.pdf';
-    window.open(resumeUrl, '_blank', 'noopener,noreferrer');
+const About = () => {  const handleResumeOpen = () => {
+    // Open resume in new tab - optimized for all platforms including mobile and Vercel hosting
+    try {
+      // Use window.open with specific parameters for better cross-platform compatibility
+      const newWindow = window.open('/Srikrishna%20Resume.pdf', '_blank', 'noopener,noreferrer');
+      
+      // Fallback for mobile devices that might block popups
+      if (!newWindow || newWindow.closed || typeof newWindow.closed === 'undefined') {
+        // If popup is blocked, use location.href as fallback
+        window.location.href = '/Srikrishna%20Resume.pdf';
+      }
+    } catch (error) {
+      // Ultimate fallback - direct navigation
+      console.log('Opening resume with fallback method');
+      window.location.href = '/Srikrishna%20Resume.pdf';
+    }
   };
 
   return (
@@ -68,13 +80,13 @@ I specialize in building responsive, scalable web and mobile apps using React, N
 
               </p>
 
-              <div className="flex flex-col sm:flex-row gap-4">
-                <motion.button
+              <div className="flex flex-col sm:flex-row gap-4">                <motion.button
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
-                  onClick={handleResumeDownload}
+                  onClick={handleResumeOpen}
                   className="inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-full bg-primary text-primary-foreground hover:bg-primary/90 transition-colors"
-                >                  <Download className="w-4 h-4" />
+                >
+                  <ExternalLink className="w-4 h-4" />
                   Open Resume
                 </motion.button>
 

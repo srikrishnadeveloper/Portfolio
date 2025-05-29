@@ -1,6 +1,6 @@
 
 import { useState, useEffect } from "react";
-import { Moon, Sun, Download } from "lucide-react";
+import { Moon, Sun, ExternalLink } from "lucide-react";
 import { useTheme } from "./ThemeProvider";
 import { motion } from "framer-motion";
 
@@ -43,10 +43,9 @@ const Navbar = () => {
       element.scrollIntoView({ behavior: "smooth" });
     }
   };
-  const handleResumeDownload = () => {
-    // Open resume in new tab - works on all hosting platforms
-    const resumeUrl = '/Srikrishna%20Resume.pdf';
-    window.open(resumeUrl, '_blank', 'noopener,noreferrer');
+  const handleResumeOpen = () => {
+    // Open resume in new tab - works reliably across all platforms and hosting services
+    window.open('/Srikrishna%20Resume.pdf', '_blank', 'noopener,noreferrer');
   };
 
   return (    <motion.nav
@@ -91,15 +90,14 @@ const Navbar = () => {
                 )}
               </button>
             ))}
-            
-            {/* Resume Download Button */}
+              {/* Resume Open Button */}
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              onClick={handleResumeDownload}
+              onClick={handleResumeOpen}
               className="inline-flex items-center gap-1.5 px-4 py-1.5 text-sm rounded-full bg-primary text-primary-foreground hover:bg-primary/90 transition-colors"
             >
-              <Download className="w-4 h-4" />
+              <ExternalLink className="w-4 h-4" />
               Resume
             </motion.button>
           </div>
